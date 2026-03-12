@@ -1,3 +1,195 @@
 /* THIS FILE WILL CONTAIN ALL STYLES FOR THE WEBSITE */
 
 /* CONSIDER USING MULTIPLE CSS FILES FOR BETTER ORGANIZATION */
+
+/* =========================================
+   Base Resets & App Container
+   ========================================= */
+/* =========================================
+   Base Resets & App Container
+   ========================================= */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    /* Uses system fonts for a native app feel */
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: #e6e6e6; /* Darker background for desktop to frame the app */
+    display: flex;
+    justify-content: center;
+}
+
+.app-container {
+    width: 100%;
+    max-width: 414px; /* Simulates a mobile phone width */
+    min-height: 100vh;
+    background-color: #fdfaf6; /* The off-white background from the MAX app */
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 0 20px rgba(0,0,0,0.1); /* Adds a shadow on desktop */
+}
+
+/* =========================================
+   Header (Call for Service)
+   ========================================= */
+.top-header {
+    padding: 15px 20px;
+    display: flex;
+    justify-content: flex-end; /* Aligns items to the right */
+    background: transparent;
+}
+
+.service-action {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.icon-btn {
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+/* =========================================
+   Horizontal Category Slider (MAX Style)
+   ========================================= */
+.category-slider {
+    padding: 0 0 15px 15px;
+}
+
+.category-list {
+    display: flex;
+    gap: 12px;
+    overflow-x: auto;
+    list-style: none;
+    padding-bottom: 10px; /* Space for the active state arrow */
+    /* Hide scrollbars for a clean app look */
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none;  /* IE and Edge */
+}
+
+.category-list::-webkit-scrollbar {
+    display: none; /* Chrome, Safari and Opera */
+}
+
+.category-item {
+    flex: 0 0 auto; /* Prevents items from shrinking */
+    width: 85px; 
+}
+
+.category-btn {
+    width: 100%;
+    background: none;
+    border: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    font-family: inherit;
+}
+
+.category-img {
+    width: 100%;
+    height: 60px;
+    object-fit: cover;
+    background: #eaeaea; /* Placeholder grey until you add real images */
+    margin-bottom: 6px;
+}
+
+.category-name {
+    font-size: 13px;
+    font-weight: 700;
+    text-align: center;
+    color: #333;
+}
+
+/* --- The Active/Selected State --- */
+.category-item.active .category-btn {
+    background-color: #8c1819; /* MAX App Dark Red */
+    border-radius: 4px;
+    padding-bottom: 8px;
+    position: relative;
+}
+
+.category-item.active .category-img {
+    border-radius: 4px 4px 0 0;
+    margin-bottom: 4px;
+}
+
+.category-item.active .category-name {
+    color: #ffffff;
+}
+
+/* The downward pointing triangle (caret) for the active item */
+.category-item.active .category-btn::after {
+    content: "";
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 8px 8px 0;
+    border-style: solid;
+    border-color: #8c1819 transparent transparent transparent;
+}
+
+/* =========================================
+   Menu List
+   ========================================= */
+.menu-list {
+    flex-grow: 1; /* Pushes the footer to the bottom */
+    padding: 0 20px 100px; /* Extra bottom padding so the sticky cart doesn't hide items */
+}
+
+.meal-card {
+    padding: 25px 0;
+    border-bottom: 1px solid #e5e5e5;
+    display: flex;
+    align-items: center;
+}
+
+.meal-name {
+    font-size: 16px;
+    font-weight: 600;
+    color: #000;
+}
+
+/* =========================================
+   Sticky Bottom Cart
+   ========================================= */
+.bottom-cart-bar {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #b3b3b3; /* Grey from your wireframe */
+    padding: 18px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 10;
+}
+
+.cart-status p {
+    font-size: 14px;
+    font-weight: 500;
+    color: #333;
+}
+
+/* The orange line at the very bottom of the wireframe */
+.bottom-cart-bar::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background-color: #e04f26; /* Wireframe orange */
+}
