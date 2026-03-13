@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <link rel="stylesheet" href="../css/styles.css">
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Table Ordering App</title>
@@ -12,7 +13,6 @@
 
         <header class="top-header">
             <div class="service-action">
-                <span class="action-text">1. Call for service</span>
                 <button class="icon-btn bell-icon" aria-label="Call for service">🔔</button>
             </div>
         </header>
@@ -58,8 +58,8 @@
             </nav>
 
             <section class="menu-list" aria-label="Available Meals">
-                <article class="meal-card">
-                    <h2 class="meal-name">Meal</h2> 
+                <article class="meal-card" data-meal-id="bolognese">
+                    <h2 class="meal-name">Bolognese</h2> 
                 </article>
                 
                 <article class="meal-card">
@@ -83,7 +83,31 @@
             <button class="icon-btn cart-icon" aria-label="View shopping cart">🛒</button>
         </footer>
 
+        <dialog id="meal-detail-modal" class="meal-modal">
+            <div class="modal-content">
+                <button method="dialog" class="close-btn">X</button>
+                
+                <button class="info-icon" aria-label="Visa allergener">ⓘ</button>
+                <h2 id="modal-title">The name of the food</h2>
+                
+                <div class="order-controls">
+                    <div class="quantity-selector">
+                        <span>✎</span>
+                        <select id="meal-quantity">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                        </select>
+                    </div>
+
+                    <button class="add-btn" id="add-to-order">
+                        <span>+</span>
+                        <span id="modal-price">93:-</span>
+                    </button>
+                </div>
+            </div>
+        </dialog>
     </div>
 
 </body>
+<script src="../js/controller/MenuController.js"></script>
 </html>
