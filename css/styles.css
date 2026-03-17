@@ -326,3 +326,33 @@ dialog::backdrop {
         border-radius: 15px; 
     }
 }
+
+/* =========================================
+   Drag and Drop Utilities
+   ========================================= */
+.meal-card {
+    cursor: grab;
+    transition: opacity 0.2s, background-color 0.2s;
+}
+
+.meal-card:active {
+    cursor: grabbing;
+}
+
+.meal-card.dragging {
+    opacity: 0.4;
+    background-color: #f0f0f0;
+}
+
+.bottom-cart-bar {
+    transition: background-color 0.2s, transform 0.2s;
+}
+
+.bottom-cart-bar.drag-over {
+    background-color: #999999; /* Darker grey to indicate drop zone */
+    border-top: 2px dashed #e04f26; /* Highlight drop area */
+}
+
+.bottom-cart-bar.item-dropped {
+    transform: scale(1.02);
+}
