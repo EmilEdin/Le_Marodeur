@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Call Service</title>
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+
+    <div class="app-container">
+        <header class="top-header" style="justify-content: flex-start;">
+            <a href="javascript:history.back()" class="icon-btn" style="text-decoration: none; font-size: 24px;">❮</a>
+        </header>
+
+        <main class="main-content" style="display: flex; flex-direction: column; align-items: center; justify-content: center; flex-grow: 1; padding: 20px;">
+            <h1 class="restaurant-name" style="margin-bottom: 40px;">Need Help?</h1>
+            
+            <button id="callServiceBtn" class="start-btn">Call Service</button>
+
+            <div id="servicePopup" class="popup hidden">
+                ✅ Service has been called! Staff is on the way.
+            </div>
+        </main>
+    </div>
+
+    <script>
+        const btn = document.getElementById('callServiceBtn');
+        const popup = document.getElementById('servicePopup');
+
+        btn.addEventListener('click', () => {
+            // Show the popup
+            popup.classList.remove('hidden');
+            
+            // Disable the button and change its text/look
+            btn.disabled = true;
+            btn.innerText = "Service Called";
+            btn.classList.add('disabled-btn');
+        });
+    </script>
+</body>
+</html>
