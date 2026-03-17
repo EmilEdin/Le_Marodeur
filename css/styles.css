@@ -208,24 +208,130 @@ dialog::backdrop {
     border: none;
     padding: 0;
     width: 100%;
-    max-height: 80%vh;
+    max-width: 100%;
     margin-bottom: 0;
     margin-top: auto; /* Trycker den till botten */
-    border-radius: 20px 20px 0 0; /* Runda hörn bara upptill */
-    box-shadow: 0 -5px 20px rgba(0,0,0,0.2);
+    /* border-radius: 20px 20px 0 0; /* Runda hörn bara upptill */
+    /* box-shadow: 0 -5px 20px rgba(0,0,0,0.2); */
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.modal-content {
+    padding: 10px 20px 20px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.order-controls {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    width: 100%;
+}
+
+.quantity-selector {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 0px 15px;
+    border: 2px solid #285A48; /* Den mörkgröna ramen från bilden */
+    border-radius: 12px;
+    background-color: white;
+}
+
+#meal-quantity {
+    border: none;
+    background: transparent;
+    font-size: 16px;
+    font-weight: bold;
+    color: #285A48;
+    outline: none;
+    cursor: pointer;
+}
+
+/* Style the pen */
+.quantity-selector span {
+    color: #285A48;
+    font-size: 18px;
+}
+
+.quantity-selector, .add-btn {
+    height: 56px;
+}
+
+.add-btn {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-grow: 1;
+
+    background-color: #285A48; /* Den mörkgröna färgen */
+    color: white;
+    border: none;
+    padding: 0px 15px;
+    border-radius: 12px;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+
+.info-icon, .close-btn {
+    background: none;      /* Tar bort bakgrundsfärgen */
+    border: none;
+    cursor: pointer;
+    
+    /* Vi behåller storleken så att den klickbara ytan är stor (minst 44px är standard för mobil) */
+    height: 44px;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    /* Ikonens utseende */
+    font-size: 24px;       /* Gör ikonen lite större nu när cirkeln är borta */
+    transition: opacity 0.2s ease, transform 0.1s ease;
+}
+
+.info-icon {
+    color: #C40C0C;        /* Använder din mörkgröna färg för att matcha temat */
+}
+
+.close-btn {
+    color: #333;           /* En neutral mörkgrå/svart för krysset */
+    font-family: sans-serif;
+}
+
+/* Interaktionseffekt: Istället för färgändring ändrar vi genomskinligheten */
+.info-icon:active, .close-btn:active {
+    opacity: 0.6;
+    transform: scale(0.9);
 }
 
 .modal-container {
-    padding: 25px;
+    /* padding: 25px;
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 20px; */
 }
 
 /* Den gröna knappen inspirerad av din bild */
 .add-btn {
-    background-color: #2d8a4e; /* Grön färg från MAX-skissen */
-    color: white;
+    /* background-color: #2d8a4e; /* Grön färg från MAX-skissen */
+    /* color: white;
     border: none;
     border-radius: 50px;
     padding: 15px 25px;
@@ -235,31 +341,31 @@ dialog::backdrop {
     font-size: 18px;
     font-weight: bold;
     flex-grow: 1;
-    cursor: pointer;
+    cursor: pointer; */
 }
 
 .modal-footer {
-    display: flex;
+    /* display: flex;
     align-items: center;
-    gap: 15px;
+    gap: 15px; */
 }
 
 /* --- IPAD FOCUS: (Media Query för skärmar över 600px) --- */
 @media (min-width: 600px) {
     .meal-modal {
-        width: 90%;
-        max-width: 500px; /* Inte för bred på en 9-tums iPad */
-        margin: auto; /* Centrerar vertikalt och horisontellt */
-        border-radius: 15px; /* Runda hörn runt om på iPad */
+        /*width: 90%;
+        /* max-width: 500px; /* Inte för bred på en 9-tums iPad */
+        /* margin: auto; /* Centrerar vertikalt och horisontellt */
+        /* border-radius: 15px; /* Runda hörn runt om på iPad */
     }
     
     .modal-container {
-        padding: 40px; /* Mer luft på iPad */
+        /* padding: 40px; /* Mer luft på iPad */
     }
 }
 
 /* Backdrop - gör bakgrunden suddig och mörk */
 .meal-modal::backdrop {
-    background-color: rgba(0, 0, 0, 0.6);
-    backdrop-filter: blur(5px);
+    /* background-color: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(5px); */
 }
