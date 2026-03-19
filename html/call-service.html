@@ -11,15 +11,23 @@
     <div class="app-container">
         <header class="top-header" style="justify-content: flex-start;">
             <a href="javascript:history.back()" class="icon-btn" style="text-decoration: none; font-size: 24px;">❮</a>
+            <div class="language-picker">
+                <select onchange="changeLanguage(this.value)">
+                    <option value="en">EN</option>
+                    <option value="sv">SV</option>
+                    <option value="es">ES</option>
+                </select>
+            </div>
         </header>
 
         <main class="main-content" style="display: flex; flex-direction: column; align-items: center; justify-content: center; flex-grow: 1; padding: 20px;">
-            <h1 class="restaurant-name" style="margin-bottom: 40px;">Need Help?</h1>
+            <!-- To do: change this to css -->
+            <h1 class="restaurant-name" style="margin-bottom: 40px;" data-i18n="need_help">Need Help?</h1>
             
-            <button id="callServiceBtn" class="start-btn">Call Service</button>
+            <button id="callServiceBtn" class="start-btn" data-i18n="call_service">Call Service</button>
 
             <div id="servicePopup" class="popup hidden">
-                ✅ Service has been called! Staff is on the way.
+                <p data-i18n="service_called">Service has been called! Staff is on the way.</p>
             </div>
         </main>
     </div>
@@ -38,5 +46,6 @@
             btn.classList.add('disabled-btn');
         });
     </script>
+    <script src="../js/controller/LanguageController.js"></script>
 </body>
 </html>
