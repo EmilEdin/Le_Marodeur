@@ -6,24 +6,33 @@
     <title>Welcome - Restaurant App</title>
     <link rel="stylesheet" href="../css/styles.css">
 </head>
+
 <body>
-    </header>
     <div class="app-container welcome-screen">
 
-    <header class="top-header">
-        <div class="service-action">
-            <a href="call-service.html" class="icon-btn bell-icon" style="text-decoration: none;">🔔</a>
-        </div>
-    </header>
+        <header class="top-header">
+            <div class="service-action">
+                <a href="call-service.html" class="icon-btn bell-icon" style="text-decoration: none;">🔔</a>
+            </div>
+            <div class="language-picker">
+                <select onchange="changeLanguage(this.value)">
+                    <option value="en">EN</option>
+                    <option value="sv">SV</option>
+                    <option value="es">ES</option>
+                </select>
+            </div>
+        </header>
+
         <main class="welcome-content">
             <div class="logo-placeholder">🍔</div>
-            
-            <h1 class="restaurant-name">Welcome</h1>
-            <p class="welcome-text">Scan, order, and enjoy right at your table.</p>
-            
-            <a href="menu.html" class="start-btn">View Menu</a>
+                
+            <h1 class="restaurant-name" data-i18n="welcome_title">Welcome</h1>
+            <p class="welcome-text" data-i18n="welcome_text">Scan, order, and enjoy right at your table.</p>
+                
+            <a href="menu.html" class="start-btn" data-i18n="view_menu">View Menu</a>
         </main>
-    </div>
 
+    </div>
+    <script src="../js/controller/LanguageController.js"></script>
 </body>
 </html>

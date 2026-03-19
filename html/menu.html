@@ -15,6 +15,13 @@
             <div class="service-action">
                 <a href="call-service.html" class="icon-btn bell-icon" style="text-decoration: none;">🔔</a>
             </div>
+            <div class="language-picker">
+                <select onchange="changeLanguage(this.value)">
+                    <option value="en">EN</option>
+                    <option value="sv">SV</option>
+                    <option value="es">ES</option>
+                </select>
+            </div>
         </header>
 
         <main class="main-content">
@@ -23,28 +30,28 @@
                     <li class="category-item active">
                         <button type="button" class="category-btn" aria-current="true">
                             <img src="placeholder.jpg" alt="" class="category-img">
-                            <span class="category-name">Limited Deluxe</span>
+                            <span class="category-name" data-i18n="category_meal_1">Limited Deluxe</span>
                         </button>
                     </li>
                     
                     <li class="category-item">
                         <button type="button" class="category-btn">
                             <img src="placeholder.jpg" alt="" class="category-img">
-                            <span class="category-name">Måltider</span>
+                            <span class="category-name" data-i18n="category_meal_2">Måltider</span>
                         </button>
                     </li>
                     
                     <li class="category-item">
                         <button type="button" class="category-btn">
                             <img src="placeholder.jpg" alt="" class="category-img">
-                            <span class="category-name">Impossible</span>
+                            <span class="category-name" data-i18n="category_meal_3">Impossible</span>
                         </button>
                     </li>
                     
                     <li class="category-item">
                         <button type="button" class="category-btn">
                             <img src="placeholder.jpg" alt="" class="category-img">
-                            <span class="category-name">Supreme Green</span>
+                            <span class="category-name" data-i18n="category_meal_4">Supreme Green</span>
                         </button>
                     </li>
 
@@ -59,26 +66,26 @@
 
             <section class="menu-list" aria-label="Available Meals">
                 <article class="meal-card" data-meal-id="bolognese">
-                    <h2 class="meal-name">Bolognese</h2> 
+                    <h2 class="meal-name" data-i18n="meal_1_name">Bolognese</h2> 
                 </article>
                 
                 <article class="meal-card">
-                    <h2 class="meal-name">Meal</h2>
+                    <h2 class="meal-name" data-i18n="meal_2_name">Meal</h2>
                 </article>
                 
                 <article class="meal-card">
-                    <h2 class="meal-name">Meal</h2>
+                    <h2 class="meal-name" data-i18n="meal_3_name">Meal</h2>
                 </article>
                 
                 <article class="meal-card">
-                    <h2 class="meal-name">Meal</h2>
+                    <h2 class="meal-name" data-i18n="meal_4_name">Meal</h2>
                 </article>
             </section>
         </main>
 
         <footer class="bottom-cart-bar">
             <div class="cart-status">
-                <p>You have not added anything yet</p>
+                <p data-i18n="cart_empty">You have not added anything yet</p>
             </div>
             <button class="icon-btn cart-icon" aria-label="View shopping cart">🛒</button>
         </footer>
@@ -93,7 +100,7 @@
 
                 
                 
-                <h2 id="modal-title">The name of the food</h2>
+                <h2 id="modal-title" data-i18n="modal_title">The name of the food</h2>
                 
                 <div class="order-controls">
                     <div class="quantity-selector">
@@ -115,6 +122,7 @@
 
     <!-- Drag and Drop Functionality -->
     <script src="../js/order_page.js"></script>
+    <script src="../js/controller/LanguageController.js"></script>
 </body>
 <script src="../js/controller/MenuController.js"></script>
 </html>
