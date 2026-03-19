@@ -42,6 +42,7 @@ const translations = {
 };
 
 // Function to change language
+// TODO: remember the last used, not the current language
 function changeLanguage(lang) {
     localStorage.setItem('selectedLanguage', lang); // Store the selected language for the entire session
     updateUI();
