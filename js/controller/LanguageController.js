@@ -86,5 +86,6 @@ function updateUI() {
     });
 }
 
+
 // Run on startup
 document.addEventListener('DOMContentLoaded', updateUI);

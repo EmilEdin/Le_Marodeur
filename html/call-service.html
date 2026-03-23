@@ -40,10 +40,15 @@
             // Show the popup
             popup.classList.remove('hidden');
             
-            // Disable the button and change its text/look
+            // Disable the button and change its translation key
             btn.disabled = true;
-            btn.innerText = "Service Called";
+            btn.setAttribute('data-i18n', 'service_called_btn');
             btn.classList.add('disabled-btn');
+            
+            // Re-run the translation function so the new key is translated
+            if (typeof updateUI === 'function') {
+                updateUI();
+            }
         });
     </script>
     <script src="../js/controller/LanguageController.js"></script>
