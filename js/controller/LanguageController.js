@@ -10,7 +10,14 @@ const translations = {
         category_meals: "Meals",
         meal_1_name: "Pasta Bolognese",
         cart_empty: "You haven't added anything yet",
-        modal_title: "The name of the food"
+        modal_title: "The name of the food",
+        // New Info Translations
+        info_title: "Dietary Information",
+        meal_desc_1: "A classic rich and hearty dish made with plant-based ingredients, slow-cooked to perfection.",
+        dietary_tags_title: "Dietary & Allergens",
+        tag_vegetarian: "Vegetarian",
+        tag_gluten_free: "Gluten-Free",
+        tag_dairy: "Contains: Dairy"
     },
     sv: {
         welcome_title: "Välkommen",
@@ -23,7 +30,14 @@ const translations = {
         category_meals: "Måltider",
         meal_1_name: "Pasta köttfärsås",
         cart_empty: "Du har inte lagt till något ännu",
-        modal_title: "Namnet på maten"
+        modal_title: "Namnet på maten",
+        // New Info Translations
+        info_title: "Kostinformation",
+        meal_desc_1: "En klassisk, fyllig och matig rätt gjord på växtbaserade ingredienser, långkokt till perfektion.",
+        dietary_tags_title: "Kost & Allergener",
+        tag_vegetarian: "Vegetarisk",
+        tag_gluten_free: "Glutenfri",
+        tag_dairy: "Innehåller: Mejeri"
     },
     es: {
         welcome_title: "Bienvenido",
@@ -36,8 +50,14 @@ const translations = {
         category_meals: "Comidas",
         meal_1_name: "Espaguetis a la boloñesa",
         cart_empty: "Aún no has agregado nada",
-        modal_title: "El nombre de la comida"
-
+        modal_title: "El nombre de la comida",
+        // New Info Translations
+        info_title: "Información Dietética",
+        meal_desc_1: "Un plato clásico, rico y sustancioso, elaborado con ingredientes de origen vegetal, cocinado a fuego lento a la perfección.",
+        dietary_tags_title: "Dieta y Alérgenos",
+        tag_vegetarian: "Vegetariano",
+        tag_gluten_free: "Sin Gluten",
+        tag_dairy: "Contiene: Lácteos"
     }
 };
 
