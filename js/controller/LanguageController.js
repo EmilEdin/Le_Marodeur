@@ -17,7 +17,11 @@ const translations = {
         dietary_tags_title: "Dietary & Allergens",
         tag_vegetarian: "Vegetarian",
         tag_gluten_free: "Gluten-Free",
-        tag_dairy: "Contains: Dairy"
+        tag_dairy: "Contains: Dairy",
+        restaurant_name: "Five Pots and One Caulderon",
+        service_called_btn: "Service Called",
+        tag_vegan: "Vegan",
+        tag_non_alcoholic: "Non-alcoholic"
     },
     sv: {
         welcome_title: "Välkommen",
@@ -37,7 +41,11 @@ const translations = {
         dietary_tags_title: "Kost & Allergener",
         tag_vegetarian: "Vegetarisk",
         tag_gluten_free: "Glutenfri",
-        tag_dairy: "Innehåller: Mejeri"
+        tag_dairy: "Innehåller: Mejeri",
+        restaurant_name: "Five Pots and One Caulderon",
+        service_called_btn: "Personal Tillkallad",
+        tag_vegan: "Vegan",
+        tag_non_alcoholic: "Alkoholfri"
     },
     es: {
         welcome_title: "Bienvenido",
@@ -57,7 +65,11 @@ const translations = {
         dietary_tags_title: "Dieta y Alérgenos",
         tag_vegetarian: "Vegetariano",
         tag_gluten_free: "Sin Gluten",
-        tag_dairy: "Contiene: Lácteos"
+        tag_dairy: "Contiene: Lácteos",
+        restaurant_name: "Five Pots and One Caulderon",
+        service_called_btn: "Servicio Llamado",
+        tag_vegan: "Vegano",
+        tag_non_alcoholic: "Sin Alcohol"
     }
 };
 

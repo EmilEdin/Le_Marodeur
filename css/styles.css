@@ -453,3 +453,8 @@ dialog::backdrop {
     background-color: #d4edda; /* Light green success background */
     color: #155724; /* Dark green text */
     border:
+}
+
+/* Add these below your other tag colors */
+.tag-vegan { background-color: #1e4620; } /* Dark green for vegan */
+.tag-non-alcoholic { background-color: #4a90e2; } /* Blue for beverages */
