@@ -34,8 +34,15 @@ mealCards.forEach(card => {
         // baserat på card.dataset.mealId
         
         // Uppdate text in dialog before it shows
-        document.getElementById('modal-title').innerText = "Brooklyn Tribute";
-        document.getElementById('modal-price').innerText = "93:-";
+        // Get the current language, default to English
+        const lang = localStorage.getItem('selectedLanguage') || 'en';
+        
+        // Grab the first item from your new menuData array
+        const meal = menuData[0]; 
+        
+        // Update text dynamically based on the real data
+        document.getElementById('modal-title').innerText = meal.names[lang];
+        document.getElementById('modal-price').innerText = `${meal.price}:-`;
         
         modal.showModal(); 
     });
