@@ -18,7 +18,6 @@ body {
     /* Uses system fonts for a native app feel */
     
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    background-color: #e6e6e6; /* Darker background for desktop to frame the app */
 
 }
 
@@ -28,7 +27,7 @@ body {
     min-height: 100vh;     /* Ensure it always covers the full height of the screen */
     margin: 0 auto;        /* Centers the container on the desktop screen */
     
-    background-color: #fdfaf6;
+    background-color: #1a3d3b;
     position: relative;
     display: flex;
     flex-direction: column;
@@ -109,12 +108,12 @@ body {
     font-size: 13px;
     font-weight: 700;
     text-align: center;
-    color: #333;
+    color: #ffffff;
 }
 
 /* --- The Active/Selected State --- */
 .category-item.active .category-btn {
-    background-color: #8c1819; /* MAX App Dark Red */
+    background-color: #b58c67;
     border-radius: 4px;
     padding-bottom: 8px;
     position: relative;
@@ -138,7 +137,7 @@ body {
     transform: translateX(-50%);
     border-width: 8px 8px 0;
     border-style: solid;
-    border-color: #8c1819 transparent transparent transparent;
+    border-color: #b58c67 transparent transparent transparent;
 }
 
 /* =========================================
@@ -151,7 +150,7 @@ body {
 
 .meal-card {
     padding: 25px 0;
-    border-bottom: 1px solid #e5e5e5;
+    border-bottom: 1px solid #b58c67;
     display: flex;
     align-items: center;
 }
@@ -159,7 +158,7 @@ body {
 .meal-name {
     font-size: 16px;
     font-weight: 600;
-    color: #000;
+    color: #84a1a0;
 }
 
 /* =========================================
@@ -170,7 +169,7 @@ body {
     bottom: 0;
     left: 0;
     width: 100%;
-    background-color: #b3b3b3; /* Grey from your wireframe */
+    background-color: #102b2a;
     padding: 18px 20px;
     display: flex;
     justify-content: space-between;
@@ -181,7 +180,7 @@ body {
 .cart-status p {
     font-size: 14px;
     font-weight: 500;
-    color: #333;
+    color: #84a1a0;
 }
 
 /* The orange line at the very bottom of the wireframe */
@@ -192,7 +191,7 @@ body {
     left: 0;
     width: 100%;
     height: 4px;
-    background-color: #e04f26; /* Wireframe orange */
+    background-color: #b58c67; /* Wireframe orange */
 }
 
 /* =========================================
@@ -239,7 +238,7 @@ dialog::backdrop {
     align-items: center;
     gap: 10px;
     padding: 0px 15px;
-    border: 2px solid #285A48; 
+    border: 2px solid #102b2a; 
     border-radius: 12px;
     background-color: white;
 }
@@ -249,13 +248,13 @@ dialog::backdrop {
     background: transparent;
     font-size: 16px;
     font-weight: bold;
-    color: #285A48;
+    color: #102b2a;
     outline: none;
     cursor: pointer;
 }
 
 .quantity-selector span {
-    color: #285A48;
+    color: #102b2a;
     font-size: 18px;
 }
 
@@ -269,7 +268,7 @@ dialog::backdrop {
     align-items: center;
     flex-grow: 1;
 
-    background-color: #285A48;
+    background-color: #102b2a;
     color: white;
     border: none;
     padding: 0px 15px;
@@ -307,7 +306,7 @@ dialog::backdrop {
 }
 
 .close-btn {
-    color: #333; 
+    color: #102b2a; 
     font-family: sans-serif;
 }
 
@@ -316,6 +315,8 @@ dialog::backdrop {
     opacity: 0.6;
     transform: scale(0.9);
 }
+
+/* TODO: Change colors to match the theme below */
 
 /* IPAD FOCUS: (Media Query for devices over 600px) --- */
 @media (min-width: 600px) {
@@ -350,7 +351,6 @@ dialog::backdrop {
 
 .bottom-cart-bar.drag-over {
     background-color: #999999; /* Darker grey to indicate drop zone */
-    border-top: 2px dashed #e04f26; /* Highlight drop area */
 }
 
 .bottom-cart-bar.item-dropped {
@@ -369,7 +369,7 @@ dialog::backdrop {
 
 .meal-description {
     font-size: 15px;
-    color: #555;
+    color: #555; /* Change to proper collor that follows theme*/
     line-height: 1.5;
 }
 
@@ -410,6 +410,7 @@ dialog::backdrop {
     flex-grow: 1;
     text-align: center;
     padding: 20px;
+    color: #ffffff;
 }
 
 .logo-placeholder {
@@ -419,17 +420,16 @@ dialog::backdrop {
 
 .welcome-text {
     font-size: 16px;
-    color: #555;
+    color: #84a1a0;
     margin-bottom: 40px;
 }
 
 .start-btn {
-    background-color: #8c1819; /* Matches active category color */
-    color: white;
     padding: 15px 40px;
     font-size: 18px;
     font-weight: bold;
-    border: none;
+    color: #ffffff;
+    border: 2px solid #b58c67;
     border-radius: 8px;
     text-decoration: none;
     cursor: pointer;
@@ -451,8 +451,7 @@ dialog::backdrop {
     margin-top: 20px;
     padding: 15px 25px;
     background-color: #d4edda; /* Light green success background */
-    color: #155724; /* Dark green text */
-    border:
+    color: #155724; /* Change so it follow scheme */ 
 }
 
 /* Add these below your other tag colors */
