@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
             draggedMeal = card;
             if (e.dataTransfer) {
                 e.dataTransfer.effectAllowed = 'copy';
-                e.dataTransfer.setData('text/plain', card.querySelector('.meal-name').textContent);
+                e.dataTransfer.setData('text/plain', card.dataset.mealId);
             }
             setTimeout(() => card.classList.add('dragging'), 0);
         });
@@ -37,25 +37,61 @@ document.addEventListener('DOMContentLoaded', () => {
         cartBar.classList.remove('drag-over');
     });
 
+    // Function to update cart UI
+    function updateCartUI() {
+        if (!cartStatus) return;
+        const total = CartModel.getTotal();
+        const count = CartModel.getCount();
+        const badge = document.getElementById('cart-badge');
+        
+        if (count > 0) {
+            cartStatus.textContent = `My Order ${total}€`;
+            if (badge) {
+                badge.textContent = count;
+                badge.style.display = 'inline-block';
+            }
+        } else {
+            cartStatus.textContent = cartStatus.getAttribute('data-i18n') ? 
+                (cartStatus.getAttribute('data-i18n') === 'cart_empty' ? 'You have not added anything yet' : 'My Order 0€') 
+                : 'You have not added anything yet';
+            if (badge) badge.style.display = 'none';
+        }
+    }
+
+    // Initialize UI
+    if (typeof CartModel !== 'undefined') {
+        CartModel.subscribe(updateCartUI);
+        updateCartUI();
+    }
+
     cartBar.addEventListener('drop', (e) => {
         e.preventDefault();
         cartBar.classList.remove('drag-over');
         
-        if (draggedMeal) {
-            const mealName = draggedMeal.querySelector('.meal-name').textContent;
+        if (draggedMeal && typeof CartModel !== 'undefined' && typeof menuData !== 'undefined') {
+            const mealId = draggedMeal.dataset.mealId;
+            const menuItem = menuData.find(item => item.id === mealId);
+            const lang = localStorage.getItem('selectedLanguage') || 'en';
             
-            // Update the cart text
-            cartStatus.textContent = `Added ${mealName} to cart!`;
-            cartStatus.style.color = '#e04f26';
-            cartStatus.style.fontWeight = '700';
-            
-            // Visual feedback
-            cartBar.classList.add('item-dropped');
-            setTimeout(() => {
-                cartBar.classList.remove('item-dropped');
-                cartStatus.style.color = '';
-                cartStatus.style.fontWeight = '500';
-            }, 1500);
+            if (menuItem) {
+                CartModel.addItem({
+                    id: menuItem.id,
+                    name: menuItem.names[lang] || menuItem.names['en'],
+                    price: menuItem.price,
+                    quantity: 1
+                });
+                
+                // Visual feedback
+                cartBar.classList.add('item-dropped');
+                cartStatus.style.color = '#e04f26';
+                cartStatus.style.fontWeight = '700';
+                
+                setTimeout(() => {
+                    cartBar.classList.remove('item-dropped');
+                    cartStatus.style.color = '';
+                    cartStatus.style.fontWeight = '500';
+                }, 1500);
+            }
         }
     });
 });

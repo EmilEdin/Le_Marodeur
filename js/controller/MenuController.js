@@ -28,25 +28,50 @@ const modal = document.getElementById('meal-detail-modal');
 const mealCards = document.querySelectorAll('.meal-card');
 const closeBtn = document.querySelector('.close-btn');
 
+let currentMealId = null;
+
 mealCards.forEach(card => {
     card.addEventListener('click', () => {
-        // Här skulle du egentligen hämta data från din "Model" 
-        // baserat på card.dataset.mealId
+        const mealId = card.dataset.mealId;
+        currentMealId = mealId;
+        const meal = menuData.find(m => m.id === mealId) || menuData[0];
         
-        // Uppdate text in dialog before it shows
-        // Get the current language, default to English
         const lang = localStorage.getItem('selectedLanguage') || 'en';
         
-        // Grab the first item from your new menuData array
-        const meal = menuData[0]; 
-        
-        // Update text dynamically based on the real data
-        document.getElementById('modal-title').innerText = meal.names[lang];
+        document.getElementById('modal-title').innerText = meal.names[lang] || meal.names['en'];
         document.getElementById('modal-price').innerText = `${meal.price}:-`;
+        
+        const quantitySelect = document.getElementById('meal-quantity');
+        if (quantitySelect) quantitySelect.value = "1";
         
         modal.showModal(); 
     });
 });
+
+const addToOrderBtn = document.getElementById('add-to-order');
+if (addToOrderBtn) {
+    addToOrderBtn.addEventListener('click', () => {
+        if (!currentMealId || typeof CartModel === 'undefined') {
+            modal.close();
+            return;
+        }
+        
+        const meal = menuData.find(m => m.id === currentMealId);
+        if (meal) {
+            const lang = localStorage.getItem('selectedLanguage') || 'en';
+            const quantitySelect = document.getElementById('meal-quantity');
+            const quantity = quantitySelect ? parseInt(quantitySelect.value) : 1;
+            
+            CartModel.addItem({
+                id: meal.id,
+                name: meal.names[lang] || meal.names['en'],
+                price: meal.price,
+                quantity: quantity
+            });
+        }
+        modal.close();
+    });
+}
 
 closeBtn.addEventListener('click', () => {
     modal.close();
