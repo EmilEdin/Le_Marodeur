@@ -5,43 +5,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Order - Table Ordering App</title>
-    <style>
-        .order-list {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            padding: 20px;
-        }
-        .order-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: #e2e2e2;
-            padding: 15px 20px;
-            border-radius: 4px;
-        }
-        .order-item-left {
-            display: flex;
-            gap: 20px;
-            font-size: 16px;
-            color: #333;
-        }
-        .delete-btn {
-            background: none;
-            border: none;
-            font-size: 24px;
-            cursor: pointer;
-            color: #333;
-            padding: 0 10px;
-        }
-        .order-header {
-            text-align: center; 
-            padding-top: 20px; 
-            font-size: 20px; 
-            color: #555;
-            text-transform: uppercase;
-        }
-    </style>
 </head>
 <body>
 
@@ -68,13 +31,13 @@
             </section>
         </main>
 
-        <footer class="bottom-cart-bar" onclick="alert('Proceeding to payment...');" style="cursor: pointer; position: relative;">
+        <footer class="bottom-cart-bar clickable-footer" onclick="alert('Proceeding to payment...');">
             <div class="cart-status">
                 <p id="order-total-text">To Payment 0€</p>
             </div>
-            <div style="position: relative; display: inline-block;">
+            <div class="cart-icon-wrapper">
                 <button class="icon-btn cart-icon" aria-label="View shopping cart">🛒</button>
-                <span id="cart-badge" style="display:none; position:absolute; top:-5px; right:-10px; background:#e04f26; color:white; border-radius:50%; padding:2px 6px; font-size:12px; font-weight:bold;">0</span>
+                <span id="cart-badge" class="cart-badge" style="display:none;">0</span>
             </div>
         </footer>
 
