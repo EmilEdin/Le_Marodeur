@@ -6,6 +6,34 @@ document.addEventListener('DOMContentLoaded', () => {
     const orderContainer = document.getElementById('order-container');
     const orderTotalText = document.getElementById('order-total-text');
     const badge = document.getElementById('cart-badge');
+    const deleteModal = document.getElementById('delete-confirm-modal');
+    const confirmDeleteBtn = document.getElementById('confirm-delete-btn');
+    const cancelDeleteBtn = document.getElementById('cancel-delete-btn');
+    
+    let itemToDeleteIndex = null;
+
+    if (confirmDeleteBtn && cancelDeleteBtn && deleteModal) {
+        confirmDeleteBtn.onclick = () => {
+            if (itemToDeleteIndex !== null) {
+                CartModel.removeItem(itemToDeleteIndex);
+                itemToDeleteIndex = null;
+            }
+            deleteModal.close();
+        };
+        
+        cancelDeleteBtn.onclick = () => {
+            itemToDeleteIndex = null;
+            deleteModal.close();
+        };
+
+        // Close when clicking outside the delete modal dialog content
+        deleteModal.addEventListener('click', (e) => {
+            if (e.target === deleteModal) {
+                itemToDeleteIndex = null;
+                deleteModal.close();
+            }
+        });
+    }
 
     function renderOrder() {
         const cart = CartModel.getCart();
@@ -40,7 +68,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 deleteBtn.innerHTML = '✕';
                 deleteBtn.setAttribute('aria-label', 'Remove item');
                 deleteBtn.onclick = () => {
-                    CartModel.removeItem(index);
+                    itemToDeleteIndex = index;
+                    if (deleteModal) {
+                        deleteModal.showModal();
+                    } else {
+                        CartModel.removeItem(index);
+                    }
                 };
                 
                 row.appendChild(leftDiv);
