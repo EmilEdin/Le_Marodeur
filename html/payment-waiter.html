@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Waiter Payment - Le Marodeur</title>
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+    <div class="app-container">
+        <header class="top-header" style="display: flex; justify-content: space-between; align-items: center;">
+            <a href="javascript:history.back()" class="icon-btn" style="text-decoration: none; font-size: 24px;">❮</a>
+            <div style="display: flex; align-items: center; gap: 15px;">
+                <div class="service-action">
+                    <a href="call-service.html" class="icon-btn bell-icon" style="text-decoration: none;">🔔</a>
+                </div>
+                <div class="language-picker">
+                    <select onchange="changeLanguage(this.value)">
+                        <option value="en">EN</option>
+                        <option value="sv">SV</option>
+                        <option value="fr">FR</option>
+                    </select>
+                </div>
+            </div>
+        </header>
+
+        <main class="main-content" style="display: flex; flex-direction: column; align-items: center; justify-content: center; flex-grow: 1; padding: 20px; text-align: center;">
+            
+            <div style="font-size: 80px; margin-bottom: 20px;">🛎️</div>
+            
+            <h1 class="restaurant-name" style="margin-bottom: 20px;" data-i18n="order_sent">Order Sent!</h1>
+            
+            <p style="font-size: 18px; color: #555; line-height: 1.5; margin-bottom: 40px; max-width: 350px;" data-i18n="waiter_notified">
+                Your order has been placed. A waiter has been notified and will be with you shortly to process your payment and bring your food.
+            </p>
+            
+            <a href="welcome.html" class="start-btn" style="text-decoration: none;" data-i18n="return_home">Return to Home</a>
+            
+        </main>
+    </div>
+
+    <script src="../js/data/dictionary.js"></script>
+    <script src="../js/controller/LanguageController.js"></script>
+</body>
+</html>

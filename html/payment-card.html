@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Card Payment - Le Marodeur</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <style>
+        .payment-form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            width: 100%;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            text-align: left;
+        }
+        .form-group label {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 5px;
+            color: #333;
+        }
+        .form-group input {
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 16px;
+            font-family: inherit;
+        }
+        .row-group {
+            display: flex;
+            gap: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="app-container">
+        <header class="top-header" style="display: flex; justify-content: space-between; align-items: center;">
+            <a href="javascript:history.back()" class="icon-btn" style="text-decoration: none; font-size: 24px;">❮</a>
+            <div style="display: flex; align-items: center; gap: 15px;">
+                <div class="service-action">
+                    <a href="call-service.html" class="icon-btn bell-icon" style="text-decoration: none;">🔔</a>
+                </div>
+                <div class="language-picker">
+                    <select onchange="changeLanguage(this.value)">
+                        <option value="en">EN</option>
+                        <option value="sv">SV</option>
+                        <option value="fr">FR</option>
+                    </select>
+                </div>
+            </div>
+        </header>
+
+        <main class="main-content" style="padding: 20px; text-align: center;">
+            <h1 class="restaurant-name" style="margin-bottom: 30px;" data-i18n="pay_by_card">Pay by Card</h1>
+            
+            <form class="payment-form" onsubmit="event.preventDefault(); alert('Payment processing (MVP mock)');">
+                <div class="form-group">
+                    <label data-i18n="card_name">Name on Card</label>
+                    <input type="text" placeholder="John Doe" required>
+                </div>
+                <div class="form-group">
+                    <label data-i18n="card_number">Card Number</label>
+                    <input type="text" placeholder="**** **** **** ****" required>
+                </div>
+                <div class="row-group">
+                    <div class="form-group" style="flex: 1;">
+                        <label data-i18n="card_expiry">Expiry Date</label>
+                        <input type="text" placeholder="MM/YY" required>
+                    </div>
+                    <div class="form-group" style="flex: 1;">
+                        <label data-i18n="card_cvc">CVC</label>
+                        <input type="text" placeholder="123" required>
+                    </div>
+                </div>
+                
+                <button type="submit" class="start-btn" style="margin-top: 20px; width: 100%;" data-i18n="pay_now">Pay Now</button>
+            </form>
+        </main>
+    </div>
+
+    <script src="../js/data/dictionary.js"></script>
+    <script src="../js/controller/LanguageController.js"></script>
+</body>
+</html>

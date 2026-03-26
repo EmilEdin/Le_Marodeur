@@ -20,7 +20,23 @@ const dictionary = {
         restaurant_name: "Le Marodeur",
         service_called_btn: "Service Called",
         tag_vegan: "Vegan",
-        tag_non_alcoholic: "Non-alcoholic"
+        tag_non_alcoholic: "Non-alcoholic",
+
+        // New Payment Translations
+        pay_by_card: "Pay by Card",
+        card_name: "Name on Card",
+        card_number: "Card Number",
+        card_expiry: "Expiry Date",
+        card_cvc: "CVC",
+        pay_now: "Pay Now",
+        pay_by_qr: "Pay by QR Code",
+        show_qr_code: "Show QR Code",
+        scan_qr_code: "Scan a QR Code",
+        scan_with_phone: "Scan this code with your mobile banking app",
+        hold_qr_to_camera: "Hold your physical QR code up to the camera",
+        order_sent: "Order Sent!",
+        waiter_notified: "Your order has been placed. A waiter has been notified and will be with you shortly to process your payment and bring your food.",
+        return_home: "Return to Home"
     },
     sv: {
         welcome_title: "Välkommen",
@@ -39,7 +55,23 @@ const dictionary = {
         restaurant_name: "Le Marodeur",
         service_called_btn: "Personal Tillkallad",
         tag_vegan: "Vegan",
-        tag_non_alcoholic: "Alkoholfri"
+        tag_non_alcoholic: "Alkoholfri",
+
+        // New Payment Translations
+        pay_by_card: "Betala med kort",
+        card_name: "Namn på kortet",
+        card_number: "Kortnummer",
+        card_expiry: "Utgångsdatum",
+        card_cvc: "CVC",
+        pay_now: "Betala nu",
+        pay_by_qr: "Betala med QR-kod",
+        show_qr_code: "Visa QR-kod",
+        scan_qr_code: "Skanna en QR-kod",
+        scan_with_phone: "Skanna den här koden med din bankapp",
+        hold_qr_to_camera: "Håll din fysiska QR-kod framför kameran",
+        order_sent: "Beställning skickad!",
+        waiter_notified: "Din beställning har tagits emot. En servitör har meddelats och kommer strax för att ta emot betalning och servera maten.",
+        return_home: "Tillbaka till start"
     },
     fr: {
         welcome_title: "Bienvenue",
@@ -58,6 +90,22 @@ const dictionary = {
         restaurant_name: "Le Marodeur",
         service_called_btn: "Service Appelé",
         tag_vegan: "Végan",
-        tag_non_alcoholic: "Sans alcool"
+        tag_non_alcoholic: "Sans alcool",
+
+        // New Payment Translations
+        pay_by_card: "Payer par carte",
+        card_name: "Nom sur la carte",
+        card_number: "Numéro de carte",
+        card_expiry: "Date d'expiration",
+        card_cvc: "CVC",
+        pay_now: "Payer maintenant",
+        pay_by_qr: "Payer par code QR",
+        show_qr_code: "Afficher le code QR",
+        scan_qr_code: "Scanner un code QR",
+        scan_with_phone: "Scannez ce code avec votre application bancaire",
+        hold_qr_to_camera: "Tenez votre code QR physique devant la caméra",
+        order_sent: "Commande envoyée !",
+        waiter_notified: "Votre commande a été passée. Un serveur a été prévenu et sera bientôt à vous pour le paiement et vous apporter votre repas.",
+        return_home: "Retour à l'accueil"
     }
 };
