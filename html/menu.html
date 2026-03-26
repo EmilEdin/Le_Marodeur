@@ -65,29 +65,32 @@
             </nav>
 
             <section class="menu-list" aria-label="Available Meals">
-                <article class="meal-card" data-meal-id="bolognese">
-                    <h2 class="meal-name" data-i18n="meal_1_name">Bolognese</h2> 
+                <article class="meal-card" data-meal-id="starters_1">
+                    <h2 class="meal-name" data-i18n="meal_1_name">French Onion Soup</h2> 
                 </article>
                 
-                <article class="meal-card">
-                    <h2 class="meal-name" data-i18n="meal_2_name">Meal</h2>
+                <article class="meal-card" data-meal-id="main_1">
+                    <h2 class="meal-name" data-i18n="meal_2_name">Beef Bourguignon</h2>
                 </article>
                 
-                <article class="meal-card">
-                    <h2 class="meal-name" data-i18n="meal_3_name">Meal</h2>
+                <article class="meal-card" data-meal-id="main_2">
+                    <h2 class="meal-name" data-i18n="meal_3_name">Ratatouille</h2>
                 </article>
                 
-                <article class="meal-card">
-                    <h2 class="meal-name" data-i18n="meal_4_name">Meal</h2>
+                <article class="meal-card" data-meal-id="dessert_1">
+                    <h2 class="meal-name" data-i18n="meal_4_name">Crème Brûlée</h2>
                 </article>
             </section>
         </main>
 
-        <footer class="bottom-cart-bar">
+        <footer class="bottom-cart-bar" onclick="window.location.href='order.html'" style="cursor: pointer; position: relative;">
             <div class="cart-status">
                 <p data-i18n="cart_empty">You have not added anything yet</p>
             </div>
-            <button class="icon-btn cart-icon" aria-label="View shopping cart">🛒</button>
+            <div style="position: relative; display: inline-block;">
+                <button class="icon-btn cart-icon" aria-label="View shopping cart">🛒</button>
+                <span id="cart-badge" style="display:none; position:absolute; top:-5px; right:-10px; background:#e04f26; color:white; border-radius:50%; padding:2px 6px; font-size:12px; font-weight:bold;">0</span>
+            </div>
         </footer>
 
         <dialog id="meal-detail-modal" class="meal-modal">
@@ -144,10 +147,10 @@
     <!-- Drag and Drop Functionality -->
     <script src="../js/data/dictionary.js"></script>
     <script src="../js/data/menuData.js"></script>
+    <script src="../js/model/CartModel.js"></script>
 
     <script src="../js/order_page.js"></script>
     <script src="../js/controller/LanguageController.js"></script>
     <script src="../js/controller/MenuController.js"></script>
 </body>
-<script src="../js/controller/MenuController.js"></script>
 </html>
