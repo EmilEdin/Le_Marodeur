@@ -454,3 +454,64 @@ dialog::backdrop {
 /* Add these below your other tag colors */
 .tag-vegan { background-color: #1e4620; } /* Dark green for vegan */
 .tag-non-alcoholic { background-color: #4a90e2; } /* Blue for beverages */
+
+/* =========================================
+   Order Page & Cart Layout
+   ========================================= */
+.order-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 20px;
+}
+.order-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #e2e2e2;
+    padding: 15px 20px;
+    border-radius: 4px;
+}
+.order-item-left {
+    display: flex;
+    gap: 20px;
+    font-size: 16px;
+    color: #333;
+}
+.delete-btn {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #333;
+    padding: 0 10px;
+}
+.order-header {
+    text-align: center; 
+    padding-top: 20px; 
+    font-size: 20px; 
+    color: #555;
+    text-transform: uppercase;
+}
+
+.clickable-footer {
+    cursor: pointer;
+    position: relative;
+}
+
+.cart-icon-wrapper {
+    position: relative;
+    display: inline-block;
+}
+
+.cart-badge {
+    position: absolute;
+    top: -5px;
+    right: -10px;
+    background: #e04f26;
+    color: white;
+    border-radius: 50%;
+    padding: 2px 6px;
+    font-size: 12px;
+    font-weight: bold;
+}

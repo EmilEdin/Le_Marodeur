@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="../css/styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Order - Table Ordering App</title>
+</head>
+<body>
+
+    <div class="app-container">
+
+        <header class="top-header">
+            <div class="service-action">
+                <a href="call-service.html" class="icon-btn bell-icon" style="text-decoration: none;">🔔</a>
+            </div>
+            <div class="language-picker">
+                <select onchange="changeLanguage(this.value)">
+                    <option value="en">EN</option>
+                    <option value="sv">SV</option>
+                    <option value="fr">FR</option>
+                </select>
+            </div>
+        </header>
+
+        <main class="main-content">
+            <h1 class="order-header" data-i18n="my_order">MY ORDER</h1>
+            
+            <section id="order-container" class="order-list">
+                <!-- Items will be generated here by OrderController.js -->
+            </section>
+        </main>
+
+        <footer class="bottom-cart-bar clickable-footer" onclick="alert('Proceeding to payment...');">
+            <div class="cart-status">
+                <p id="order-total-text">To Payment 0€</p>
+            </div>
+            <div class="cart-icon-wrapper">
+                <button class="icon-btn cart-icon" aria-label="View shopping cart">🛒</button>
+                <span id="cart-badge" class="cart-badge" style="display:none;">0</span>
+            </div>
+        </footer>
+
+        <dialog id="delete-confirm-modal" class="meal-modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 data-i18n="delete_confirm_title" style="margin: 0 auto; color:#8c1819;">Remove Item?</h2>
+                </div>
+                <p style="text-align:center; margin: 20px 0; font-size: 16px; color: #555;" data-i18n="delete_confirm_text">Are you sure you want to remove this item from your order?</p>
+                <div class="order-controls" style="justify-content: center; gap: 20px; padding-bottom: 10px;">
+                    <button id="cancel-delete-btn" class="quantity-selector" style="cursor: pointer; padding: 0 20px; background: white; color: #285A48; font-weight:bold; font-size:16px;" data-i18n="cancel_btn">Cancel</button>
+                    <button id="confirm-delete-btn" class="add-btn" style="background-color: #8c1819; flex-grow:0; padding: 0 30px; cursor: pointer;" data-i18n="remove_btn">Remove</button>
+                </div>
+            </div>
+        </dialog>
+
+    </div>
+
+    <script src="../js/data/dictionary.js"></script>
+    <script src="../js/model/CartModel.js"></script>
+    <script src="../js/controller/LanguageController.js"></script>
+    <script src="../js/controller/OrderController.js"></script>
+</body>
+</html>
