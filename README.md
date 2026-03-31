@@ -46,6 +46,4 @@ Give cred to everyone here?
 
 ### Icons
 Would have in svg if flaticon allowed it for free version
-Give cred to everyone here?
-
-Bell: <a href="https://www.flaticon.com/free-icons/notification-bell" title="notification bell icons">Notification bell icons created by Pixel perfect - Flaticon</a>
+Use the direct SVG code but can also be retrieved from assets if you want to change the code. 
