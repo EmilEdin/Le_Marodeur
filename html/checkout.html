@@ -44,6 +44,33 @@
             color: #b58c67;
             border: 2px solid #b58c67;
         }
+        
+        /* New Tipping Styles */
+        .tip-section {
+            background: #e2e2e2;
+            padding: 15px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+        }
+        .tip-buttons {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            margin: 15px 0;
+        }
+        .tip-btn {
+            padding: 8px 15px;
+            border: 2px solid #102b2a;
+            background: white;
+            color: #102b2a;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .tip-btn.active {
+            background: #102b2a;
+            color: white;
+        }
     </style>
 </head>
 <body>
@@ -73,6 +100,26 @@
                     <input type="number" id="table-number" placeholder="12" required>
                 </div>
 
+                <div class="tip-section">
+                    <p style="font-size: 16px; color: #333;">
+                        <span data-i18n="subtotal">Subtotal:</span> 
+                        <span id="subtotal-amount" style="font-weight: bold;">0</span>€
+                    </p>
+                    
+                    <p style="margin-top: 15px; font-weight: 600;" data-i18n="add_tip">Add a tip:</p>
+                    <div class="tip-buttons">
+                        <button class="tip-btn active" onclick="applyTip(0, this)">0%</button>
+                        <button class="tip-btn" onclick="applyTip(10, this)">10%</button>
+                        <button class="tip-btn" onclick="applyTip(15, this)">15%</button>
+                        <button class="tip-btn" onclick="applyTip(20, this)">20%</button>
+                    </div>
+
+                    <p style="font-size: 20px; font-weight: bold; color: #102b2a; margin-top: 15px;">
+                        <span data-i18n="total_to_pay">Total to Pay:</span> 
+                        <span id="total-amount">0</span>€
+                    </p>
+                </div>
+
                 <div class="payment-options">
                     <button class="start-btn payment-btn" onclick="proceedTo('payment-qr.html')" data-i18n="pay_by_qr">Pay by QR Code</button>
                     <button class="start-btn payment-btn" onclick="proceedTo('payment-card.html')" data-i18n="pay_by_card">Pay by Card</button>
@@ -82,17 +129,42 @@
         </main>
     </div>
 
+    <script src="../js/model/CartModel.js"></script>
     <script>
+        let currentTip = 0;
+
+        function updateTotals() {
+            // Get the total cost from the cart
+            const subtotal = CartModel.getTotal();
+            const tipAmount = subtotal * (currentTip / 100);
+            const total = subtotal + tipAmount;
+            
+            // Update the UI
+            document.getElementById('subtotal-amount').innerText = subtotal.toFixed(2);
+            document.getElementById('total-amount').innerText = total.toFixed(2);
+        }
+
+        function applyTip(percentage, buttonElement) {
+            currentTip = percentage;
+            
+            // Highlight the selected button
+            document.querySelectorAll('.tip-btn').forEach(btn => btn.classList.remove('active'));
+            buttonElement.classList.add('active');
+            
+            updateTotals();
+        }
+
         function proceedTo(url) {
             const tableNum = document.getElementById('table-number').value;
             if(!tableNum) {
                 alert('Please enter your table number to proceed.');
                 return;
             }
-            // Save the table number for potential future use by backend
             localStorage.setItem('le_marodeur_table_number', tableNum);
             window.location.href = url;
         }
+
+        document.addEventListener('DOMContentLoaded', updateTotals);
     </script>
     <script src="../js/data/dictionary.js"></script>
     <script src="../js/controller/LanguageController.js"></script>

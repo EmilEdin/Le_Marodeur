@@ -7,16 +7,23 @@ class MenuView {
         const container = document.getElementById('category-list');
         if (!container) return;
         
-        container.innerHTML = categories.map(cat => `
+        container.innerHTML = categories.map(cat => {
+            // Dynamically assign the images based on category
+            let imgSrc = '../assets/images/appetizer.jpg'; // Default for most meals
+            if (cat.id === 'desserts') imgSrc = '../assets/images/dessert.jpg';
+            if (cat.id === 'beverages') imgSrc = '../assets/images/wine.jpg';
+
+            return `
             <li class="category-item ${cat.id === activeCategoryId ? 'active' : ''}" data-category-id="${cat.id}">
                 <button type="button" class="category-btn">
-                    <img src="placeholder.jpg" alt="" class="category-img">
+                    <img src="${imgSrc}" alt="" class="category-img">
                     <span class="category-name" data-i18n="${cat.i18n}">${cat.defaultName}</span>
                 </button>
             </li>
-        `).join('');
+            `;
+        }).join('');
         
-        // Re-apply translations to the new category tabs
+        
         if (typeof updateUI === 'function') updateUI();
     }
 

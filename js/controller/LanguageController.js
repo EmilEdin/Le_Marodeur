@@ -8,22 +8,27 @@ function changeLanguage(lang) {
         updateMealsDisplay();
     }
     
-    // Updates order page (NEW)
+    // Updates order page
     if (typeof renderOrder === 'function') {
         renderOrder();
     }
 }
 
-// Function to update the text on the page
 function updateUI() {
     const lang = localStorage.getItem('selectedLanguage') || 'en';
+    
+    
+    const langPicker = document.querySelector('.language-picker select');
+    if (langPicker) {
+        langPicker.value = lang;
+    }
     
     document.querySelectorAll('[data-i18n]').forEach(element => {
         const key = element.getAttribute('data-i18n');
         
-        // Use the global 'dictionary' from dictionary.js instead of 'translations'
-        if (dictionary[lang] && dictionary[lang][key]) {
-            if (element.tagName === 'INPUT' && element.type === 'placeholder') {
+        
+        if (typeof dictionary !== 'undefined' && dictionary[lang] && dictionary[lang][key]) {
+            if (element.tagName === 'INPUT' && element.hasAttribute('placeholder')) {
                 element.placeholder = dictionary[lang][key];
             } else {
                 element.innerText = dictionary[lang][key];
@@ -31,8 +36,6 @@ function updateUI() {
         }
     });
 }
-
-document.addEventListener('DOMContentLoaded', updateUI);
 
 // Run on startup
 document.addEventListener('DOMContentLoaded', updateUI);

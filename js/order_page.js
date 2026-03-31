@@ -1,6 +1,6 @@
-let draggedMeal = null; // Global so drop zones can see it
+let draggedMeal = null; 
 
-// Wrapped in a function so MenuController can re-run it every time the menu is filtered
+
 window.initDragAndDrop = function() {
     const mealCards = document.querySelectorAll('.meal-card');
     mealCards.forEach(card => {
@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
             
             if (draggedMeal) {
                 const mealId = draggedMeal.dataset.mealId;
-                // Find the actual meal data from our database
+                
                 const menuItem = menuData.find(m => m.id === mealId);
                 const lang = localStorage.getItem('selectedLanguage') || 'en';
                 
@@ -55,7 +55,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         quantity: 1
                     });
                     
-                    // Visual feedback
+                    
                     const mealName = menuItem.names[lang] || menuItem.names['en'];
                     cartStatus.textContent = `Added ${mealName} to cart!`;
                     cartBar.classList.add('item-dropped');
@@ -66,7 +66,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         cartBar.classList.remove('item-dropped');
                         cartStatus.style.color = '';
                         cartStatus.style.fontWeight = '500';
-                        updateCartUI(); // Reset the text back to total price
+                        updateCartUI();
                     }, 1500);
                 }
             }
@@ -81,8 +81,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const badge = document.getElementById('cart-badge');
         
         if (count > 0) {
-            // CRITICAL FIX: Remove the translation attribute so the LanguageController 
-            // doesn't force this text back to "You have not added anything yet"
+
             cartStatus.removeAttribute('data-i18n');
             
             cartStatus.textContent = `My Order ${total}€`;

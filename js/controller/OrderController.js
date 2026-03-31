@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Made global so LanguageController can trigger it
+    
     window.renderOrder = function() {
         const cart = CartModel.getCart();
         orderContainer.innerHTML = '';
@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (cart.length === 0) {
             orderContainer.innerHTML = '<p class="cart-empty-text" data-i18n="cart_empty">Your order is empty.</p>';            
-            // Fixed function call typo here
+            
             if (typeof updateUI === 'function') {
                 updateUI();
             }
@@ -54,7 +54,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const leftDiv = document.createElement('div');
                 leftDiv.className = 'order-item-left';
                 
-                // Dynamically fetch the translated name
+                
                 let displayName = item.name;
                 if (typeof menuData !== 'undefined') {
                     const meal = menuData.find(m => m.id === item.id);
@@ -99,7 +99,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const count = CartModel.getCount();
         const lang = localStorage.getItem('selectedLanguage') || 'en';
         
-        // Localized prefixes for the total cost bar
+        
         const toPaymentText = { en: 'To Payment', sv: 'Till Betalning', fr: 'Vers le Paiement' };
         const prefix = toPaymentText[lang] || toPaymentText['en'];
         

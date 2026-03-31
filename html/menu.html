@@ -10,24 +10,28 @@
 
     <div class="app-container">
 
-        <header class="top-header">
-            <div class="service-action">
-                <a href="call-service.html" class="icon-btn bell-icon" aria-label="Notifications">
-                    <svg class="bell-svg" viewBox="0 0 24 24" fill="none"
-                        stroke="currentColor" stroke-width="2"
-                        stroke-linecap="round" stroke-linejoin="round"
-                        aria-hidden="true">
-                        <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
-                        <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
-                    </svg>
-                </a>            
-            </div>
-            <div class="language-picker">
-                <select onchange="changeLanguage(this.value)">
-                    <option value="en">EN</option>
-                    <option value="sv">SV</option>
-                    <option value="fr">FR</option>
-                </select>
+        <header class="top-header" style="justify-content: space-between; align-items: center;">
+            <a href="javascript:history.back()" class="icon-btn" style="text-decoration: none; font-size: 24px;">❮</a>
+            
+            <div style="display: flex; align-items: center; gap: 15px;">
+                <div class="service-action">
+                    <a href="call-service.html" class="icon-btn bell-icon" aria-label="Notifications">
+                        <svg class="bell-svg" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round"
+                            aria-hidden="true">
+                            <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+                            <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+                        </svg>
+                    </a>            
+                </div>
+                <div class="language-picker">
+                    <select onchange="changeLanguage(this.value)">
+                        <option value="en">EN</option>
+                        <option value="sv">SV</option>
+                        <option value="fr">FR</option>
+                    </select>
+                </div>
             </div>
         </header>
 
@@ -184,7 +188,17 @@
             </div>
         </dialog>
     </div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mobile-drag-drop@2.3.0/default.css">
+    <script src="https://cdn.jsdelivr.net/npm/mobile-drag-drop@2.3.0/index.min.js"></script>
+    <script>
+        MobileDragDrop.polyfill({
+            dragImageTranslateOverride: MobileDragDrop.scrollBehaviourDragImageTranslateOverride
+        });
+        // This prevents the screen from scrolling while you drag a meal
+        window.addEventListener('touchmove', function() {}, {passive: false});
+    </script>
 
+    <script src="../js/data/dictionary.js"></script>
     <script src="../js/data/dictionary.js"></script>
     <script src="../js/data/menuData.js"></script>
     <script src="../js/model/CartModel.js"></script>

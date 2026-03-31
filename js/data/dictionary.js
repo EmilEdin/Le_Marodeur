@@ -22,7 +22,7 @@ const dictionary = {
         tag_vegan: "Vegan",
         tag_non_alcoholic: "Non-alcoholic",
 
-        // New Payment Translations
+        
         pay_by_card: "Pay by Card",
         card_name: "Name on Card",
         card_number: "Card Number",
@@ -61,7 +61,11 @@ const dictionary = {
 
         checkout_title: "Checkout",
         table_number: "Table Number:",
-        pay_at_table: "Pay at Table"
+        pay_at_table: "Pay at Table",
+
+        subtotal: "Subtotal:",
+        add_tip: "Add a tip:",
+        total_to_pay: "Total to Pay:"
     },
     sv: {
         welcome_title: "Välkommen",
@@ -82,7 +86,7 @@ const dictionary = {
         tag_vegan: "Vegan",
         tag_non_alcoholic: "Alkoholfri",
 
-        // New Payment Translations
+        
         pay_by_card: "Betala med kort",
         card_name: "Namn på kortet",
         card_number: "Kortnummer",
@@ -121,7 +125,11 @@ const dictionary = {
 
         checkout_title: "Betalning",
         table_number: "Bordsnummer:",
-        pay_at_table: "Betala vid bordet"
+        pay_at_table: "Betala vid bordet",
+
+        subtotal: "Delsumma:",
+        add_tip: "Lägg till dricks:",
+        total_to_pay: "Att betala:"
     },
     fr: {
         welcome_title: "Bienvenue",
@@ -142,7 +150,7 @@ const dictionary = {
         tag_vegan: "Végan",
         tag_non_alcoholic: "Sans alcool",
 
-        // New Payment Translations
+        
         pay_by_card: "Payer par carte",
         card_name: "Nom sur la carte",
         card_number: "Numéro de carte",
@@ -181,6 +189,10 @@ const dictionary = {
 
         checkout_title: "Paiement",
         table_number: "Numéro de table :",
-        pay_at_table: "Payer à table"
+        pay_at_table: "Payer à table",
+
+        subtotal: "Sous-total :",
+        add_tip: "Ajouter un pourboire :",
+        total_to_pay: "Total à payer :"
     }
 };
