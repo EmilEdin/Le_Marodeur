@@ -46,19 +46,15 @@ document.addEventListener('DOMContentLoaded', () => {
         const lang = localStorage.getItem('selectedLanguage') || 'en';
 
         if (cart.length === 0) {
-            orderContainer.innerHTML = '<p class="cart-empty-text" data-i18n="cart_empty">Your order is empty.</p>';            
+            orderContainer.innerHTML = '<tr><td colspan="5" style="text-align:center; padding:30px;"><p class="cart-empty-text" data-i18n="cart_empty">Your order is empty.</p></td></tr>';            
             
             if (typeof updateUI === 'function') {
                 updateUI();
             }
         } else {
             cart.forEach((item, index) => {
-                const row = document.createElement('article');
-                row.className = 'order-item';
-                
-                const leftDiv = document.createElement('div');
-                leftDiv.className = 'order-item-left';
-                
+                const row = document.createElement('tr');
+                row.className = 'order-item-row';
                 
                 let displayName = item.name;
                 if (typeof menuData !== 'undefined') {
@@ -68,17 +64,23 @@ document.addEventListener('DOMContentLoaded', () => {
                     }
                 }
 
-                const nameSpan = document.createElement('span');
-                nameSpan.textContent = displayName + (item.quantity > 1 ? ` x${item.quantity}` : '');
-                
-                const priceSpan = document.createElement('span');
-                priceSpan.textContent = `${item.price * item.quantity}:-`;
-                
-                leftDiv.appendChild(nameSpan);
-                leftDiv.appendChild(priceSpan);
+                const nameTd = document.createElement('td');
+                nameTd.textContent = displayName;
+
+                const priceTd = document.createElement('td');
+                priceTd.textContent = `${item.price}:-`;
+
+                const qtyTd = document.createElement('td');
+                qtyTd.textContent = item.quantity;
+
+                const totalTd = document.createElement('td');
+                totalTd.textContent = `${item.price * item.quantity}:-`;
+
+                const actionTd = document.createElement('td');
+                actionTd.className = 'action-cell';
                 
                 const deleteBtn = document.createElement('button');
-                deleteBtn.className = 'delete-btn';
+                deleteBtn.className = 'delete-btn-table';
                 deleteBtn.innerHTML = '✕';
                 deleteBtn.setAttribute('aria-label', 'Remove item');
                 deleteBtn.onclick = () => {
@@ -90,8 +92,14 @@ document.addEventListener('DOMContentLoaded', () => {
                     }
                 };
                 
-                row.appendChild(leftDiv);
-                row.appendChild(deleteBtn);
+                actionTd.appendChild(deleteBtn);
+                
+                row.appendChild(nameTd);
+                row.appendChild(priceTd);
+                row.appendChild(qtyTd);
+                row.appendChild(totalTd);
+                row.appendChild(actionTd);
+                
                 orderContainer.appendChild(row);
             });
         }

@@ -40,10 +40,26 @@
         </header>
 
         <main class="main-content">
-            <h1 class="order-header" data-i18n="my_order">MY ORDER</h1>
+            <div class="order-header-container">
+                <h1 class="order-header" data-i18n="my_order">MY ORDER</h1>
+                <button class="checkout-header-btn" onclick="window.location.href='checkout.html';">Checkout</button>
+            </div>
             
-            <section id="order-container" class="order-list">
-                </section>
+            <div class="cart-table-wrapper">
+                <table class="cart-table">
+                    <thead>
+                        <tr>
+                            <th data-i18n="dish_name">Dish Name</th>
+                            <th data-i18n="price_per_item">Price/Item</th>
+                            <th data-i18n="total_items">Qty</th>
+                            <th data-i18n="total_price">Total Price</th>
+                            <th class="action-cell"></th>
+                        </tr>
+                    </thead>
+                    <tbody id="order-container">
+                    </tbody>
+                </table>
+            </div>
         </main>
 
         <footer class="bottom-cart-bar clickable-footer" onclick="window.location.href='checkout.html';">
