@@ -127,18 +127,17 @@ h1 {
     text-align: center;
     font-family: "Lora","Lora Placeholder",serif;
     font-size: 17px;
+    color: #84a1a0;
 }
 
 /* --- The Active/Selected State --- */
 .category-item.active .category-btn {
     background-color: #b58c67;
-    border-radius: 4px;
     padding-bottom: 8px;
     position: relative;
 }
 
 .category-item.active .category-img {
-    border-radius: 4px 4px 0 0;
     margin-bottom: 4px;
 }
 
