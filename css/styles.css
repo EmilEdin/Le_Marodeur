@@ -247,7 +247,86 @@ h1 {
 }
 
 /* =========================================
-   Dialog designs
+   Confirm Dialog designs (Remove Item)
+   ========================================= */
+.confirm-modal {
+    border: none;
+    padding: 24px;
+    width: 90%;
+    max-width: 400px;
+    margin: auto; /* Centered vertically and horizontally */
+    border-radius: 16px;
+    background-color: #ffffff;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2); 
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+.confirm-modal::backdrop {
+    background-color: rgba(0, 0, 0, 0.4); 
+    backdrop-filter: blur(2px); 
+}
+
+.confirm-title {
+    font-size: 24px;
+    font-weight: 700;
+    color: #000000;
+    margin-top: 0;
+    margin-bottom: 12px;
+}
+
+.confirm-text {
+    font-size: 16px;
+    color: #000000;
+    margin-top: 0;
+    margin-bottom: 24px;
+    line-height: 1.4;
+}
+
+.confirm-controls {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+.confirm-btn {
+    flex: 1;
+    height: 48px;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.2s, transform 0.1s;
+}
+
+.confirm-btn:active {
+    transform: scale(0.97);
+}
+
+.confirm-btn.cancel-btn {
+    background-color: #ffffff;
+    color: #000000;
+    border: 2px solid #102b2a; 
+}
+
+.confirm-btn.cancel-btn:hover {
+    background-color: #f5f5f5;
+}
+
+.confirm-btn.remove-btn {
+    background-color: #102b2a;
+    color: #ffffff;
+    border: none;
+}
+
+.confirm-btn.remove-btn:hover {
+    background-color: #0b1e1d;
+}
+
+/* =========================================
+   Dialog designs (Meal detailed view)
    ========================================= */
 dialog::backdrop {
     background-color: rgba(0, 0, 0, 0.18); /* Make the backdrop dark and semi-transparent */
