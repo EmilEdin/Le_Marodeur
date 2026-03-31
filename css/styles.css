@@ -44,6 +44,21 @@ footer {
     background: transparent;
 }
 
+.bell-svg {
+    width: 23px;             /* Ändra här för att välja storlek (t.ex. 24px eller 40px) */
+    height: 23px;
+    display: block;
+    stroke: #b58c67;         /* Gul färg för Feather-ikon (observera: Feather använder "stroke", inte "fill"!) */
+}
+
+.bell-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;   /* Ta bort understrykning på länken */
+}
+
+
 h1 {
     font-family: "Lora","Lora Placeholder",serif;
     font-size: 40px;
