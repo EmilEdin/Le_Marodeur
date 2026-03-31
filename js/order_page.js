@@ -81,10 +81,15 @@ document.addEventListener('DOMContentLoaded', () => {
         const badge = document.getElementById('cart-badge');
         
         if (count > 0) {
-
             cartStatus.removeAttribute('data-i18n');
             
-            cartStatus.textContent = `My Order ${total}€`;
+            const lang = localStorage.getItem('selectedLanguage') || 'en';
+            let orderText = 'My Order';
+            if (typeof dictionary !== 'undefined' && dictionary[lang] && dictionary[lang]['my_order']) {
+                orderText = dictionary[lang]['my_order'];
+            }
+            
+            cartStatus.textContent = `${orderText} ${total}€`;
             if (badge) {
                 badge.textContent = count;
                 badge.style.display = 'inline-block';

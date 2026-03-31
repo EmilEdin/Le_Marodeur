@@ -66,7 +66,8 @@ const dictionary = {
 
         subtotal: "Subtotal:",
         add_tip: "Add a tip:",
-        total_to_pay: "Total to Pay:"
+        total_to_pay: "Total to Pay:",
+        my_order: "My Order"
     },
     sv: {
         welcome_title: "Välkommen",
@@ -131,7 +132,8 @@ const dictionary = {
 
         subtotal: "Delsumma:",
         add_tip: "Lägg till dricks:",
-        total_to_pay: "Att betala:"
+        total_to_pay: "Att betala:",
+        my_order: "Min Beställning"
     },
     fr: {
         welcome_title: "Bienvenue",
@@ -196,6 +198,7 @@ const dictionary = {
 
         subtotal: "Sous-total :",
         add_tip: "Ajouter un pourboire :",
-        total_to_pay: "Total à payer :"
+        total_to_pay: "Total à payer :",
+        my_order: "Ma Commande"
     }
 };
