@@ -350,7 +350,7 @@ dialog::backdrop {
 }
 
 .bottom-cart-bar.drag-over {
-    background-color: #999999; /* Darker grey to indicate drop zone */
+    background-color: #999999; /* TODO: change color */
 }
 
 .bottom-cart-bar.item-dropped {
@@ -436,9 +436,6 @@ dialog::backdrop {
     transition: background-color 0.2s;
 }
 
-.start-btn:active {
-    background-color: #5c0f10;
-}
 
 /* =========================================
    Call Service Feature Styles

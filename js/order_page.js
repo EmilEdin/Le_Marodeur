@@ -44,6 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (draggedMeal) {
             const mealName = draggedMeal.querySelector('.meal-name').textContent;
             
+            // TODO: Take away styling in a JS file, move to CSS
             // Update the cart text
             cartStatus.textContent = `Added ${mealName} to cart!`;
             cartStatus.style.color = '#e04f26';
