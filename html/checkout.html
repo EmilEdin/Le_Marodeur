@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout - Le Marodeur</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <style>
+        .checkout-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            padding: 20px;
+            text-align: center;
+            max-width: 400px;
+            margin: 0 auto;
+            width: 100%;
+        }
+        .table-input-group {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-bottom: 20px;
+            text-align: left;
+        }
+        .table-input-group label {
+            font-size: 16px;
+            font-weight: 600;
+            color: #333;
+        }
+        .table-input-group input {
+            padding: 12px;
+            font-size: 18px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-family: inherit;
+        }
+        .payment-btn {
+            width: 100%;
+            margin-bottom: 12px;
+        }
+        .transparent-btn {
+            background-color: transparent;
+            color: #b58c67;
+            border: 2px solid #b58c67;
+        }
+    </style>
+</head>
+<body>
+    <div class="app-container">
+        <header class="top-header" style="justify-content: space-between;">
+            <a href="javascript:history.back()" class="icon-btn" style="text-decoration: none; font-size: 24px;">❮</a>
+            <div style="display: flex; gap: 15px; align-items: center;">
+                <div class="service-action">
+                    <a href="call-service.html" class="icon-btn bell-icon" style="text-decoration: none;">🔔</a>
+                </div>
+                <div class="language-picker">
+                    <select onchange="changeLanguage(this.value)">
+                        <option value="en">EN</option>
+                        <option value="sv">SV</option>
+                        <option value="fr">FR</option>
+                    </select>
+                </div>
+            </div>
+        </header>
+
+        <main class="main-content">
+            <div class="checkout-container">
+                <h1 class="order-header" data-i18n="checkout_title" style="margin-bottom: 20px; color: #102b2a;">Checkout</h1>
+                
+                <div class="table-input-group">
+                    <label for="table-number" data-i18n="table_number">Table Number:</label>
+                    <input type="number" id="table-number" placeholder="12" required>
+                </div>
+
+                <div class="payment-options">
+                    <button class="start-btn payment-btn" onclick="proceedTo('payment-qr.html')" data-i18n="pay_by_qr">Pay by QR Code</button>
+                    <button class="start-btn payment-btn" onclick="proceedTo('payment-card.html')" data-i18n="pay_by_card">Pay by Card</button>
+                    <button class="start-btn payment-btn transparent-btn" onclick="proceedTo('payment-waiter.html')" data-i18n="pay_at_table">Pay at Table</button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        function proceedTo(url) {
+            const tableNum = document.getElementById('table-number').value;
+            if(!tableNum) {
+                alert('Please enter your table number to proceed.');
+                return;
+            }
+            // Save the table number for potential future use by backend
+            localStorage.setItem('le_marodeur_table_number', tableNum);
+            window.location.href = url;
+        }
+    </script>
+    <script src="../js/data/dictionary.js"></script>
+    <script src="../js/controller/LanguageController.js"></script>
+</body>
+</html>

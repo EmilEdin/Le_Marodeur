@@ -26,7 +26,6 @@ document.addEventListener('DOMContentLoaded', () => {
             deleteModal.close();
         };
 
-        // Close when clicking outside the delete modal dialog content
         deleteModal.addEventListener('click', (e) => {
             if (e.target === deleteModal) {
                 itemToDeleteIndex = null;
@@ -35,15 +34,17 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    function renderOrder() {
+    // Made global so LanguageController can trigger it
+    window.renderOrder = function() {
         const cart = CartModel.getCart();
         orderContainer.innerHTML = '';
+        const lang = localStorage.getItem('selectedLanguage') || 'en';
 
         if (cart.length === 0) {
             orderContainer.innerHTML = '<p class="cart-empty-text" data-i18n="cart_empty">Your order is empty.</p>';            
-            // Re-apply translation if language controller is loaded
-            if (typeof updateContent === 'function') {
-                updateContent();
+            // Fixed function call typo here
+            if (typeof updateUI === 'function') {
+                updateUI();
             }
         } else {
             cart.forEach((item, index) => {
@@ -53,8 +54,17 @@ document.addEventListener('DOMContentLoaded', () => {
                 const leftDiv = document.createElement('div');
                 leftDiv.className = 'order-item-left';
                 
+                // Dynamically fetch the translated name
+                let displayName = item.name;
+                if (typeof menuData !== 'undefined') {
+                    const meal = menuData.find(m => m.id === item.id);
+                    if (meal && meal.names[lang]) {
+                        displayName = meal.names[lang];
+                    }
+                }
+
                 const nameSpan = document.createElement('span');
-                nameSpan.textContent = item.name + (item.quantity > 1 ? ` x${item.quantity}` : '');
+                nameSpan.textContent = displayName + (item.quantity > 1 ? ` x${item.quantity}` : '');
                 
                 const priceSpan = document.createElement('span');
                 priceSpan.textContent = `${item.price * item.quantity}:-`;
@@ -84,23 +94,27 @@ document.addEventListener('DOMContentLoaded', () => {
         updateFooter();
     }
 
-    function updateFooter() {
+    window.updateFooter = function() {
         const total = CartModel.getTotal();
         const count = CartModel.getCount();
+        const lang = localStorage.getItem('selectedLanguage') || 'en';
+        
+        // Localized prefixes for the total cost bar
+        const toPaymentText = { en: 'To Payment', sv: 'Till Betalning', fr: 'Vers le Paiement' };
+        const prefix = toPaymentText[lang] || toPaymentText['en'];
         
         if (count > 0) {
-            orderTotalText.textContent = `To Payment ${total}€`;
+            orderTotalText.textContent = `${prefix} ${total}€`;
             if (badge) {
                 badge.textContent = count;
                 badge.style.display = 'inline-block';
             }
         } else {
-            orderTotalText.textContent = 'To Payment 0€';
+            orderTotalText.textContent = `${prefix} 0€`;
             if (badge) badge.style.display = 'none';
         }
     }
 
-    // Initialize and listen to changes
     CartModel.subscribe(renderOrder);
     renderOrder();
 });

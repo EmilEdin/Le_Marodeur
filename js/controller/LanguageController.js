@@ -2,6 +2,16 @@
 function changeLanguage(lang) {
     localStorage.setItem('selectedLanguage', lang); 
     updateUI();
+    
+    // Updates menu page
+    if (typeof updateMealsDisplay === 'function') {
+        updateMealsDisplay();
+    }
+    
+    // Updates order page (NEW)
+    if (typeof renderOrder === 'function') {
+        renderOrder();
+    }
 }
 
 // Function to update the text on the page

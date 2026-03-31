@@ -1,11 +1,8 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const mealCards = document.querySelectorAll('.meal-card');
-    const cartBar = document.querySelector('.bottom-cart-bar');
-    const cartStatus = document.querySelector('.cart-status p');
-    
-    let draggedMeal = null;
+let draggedMeal = null; // Global so drop zones can see it
 
-    // Make all meal cards draggable and add event listeners
+// Wrapped in a function so MenuController can re-run it every time the menu is filtered
+window.initDragAndDrop = function() {
+    const mealCards = document.querySelectorAll('.meal-card');
     mealCards.forEach(card => {
         card.draggable = true;
         
@@ -23,21 +20,60 @@ document.addEventListener('DOMContentLoaded', () => {
             draggedMeal = null;
         });
     });
+};
 
-    // Cart drop zone event listeners
-    cartBar.addEventListener('dragover', (e) => {
-        e.preventDefault(); // Necessary to allow dropping
-        if (e.dataTransfer) {
-            e.dataTransfer.dropEffect = 'copy';
-        }
-        cartBar.classList.add('drag-over');
-    });
+document.addEventListener('DOMContentLoaded', () => {
+    const cartBar = document.querySelector('.bottom-cart-bar');
+    const cartStatus = document.querySelector('.cart-status p');
 
-    cartBar.addEventListener('dragleave', () => {
-        cartBar.classList.remove('drag-over');
-    });
+    if (cartBar) {
+        cartBar.addEventListener('dragover', (e) => {
+            e.preventDefault(); 
+            if (e.dataTransfer) e.dataTransfer.dropEffect = 'copy';
+            cartBar.classList.add('drag-over');
+        });
 
-    // Function to update cart UI
+        cartBar.addEventListener('dragleave', () => {
+            cartBar.classList.remove('drag-over');
+        });
+
+        cartBar.addEventListener('drop', (e) => {
+            e.preventDefault();
+            cartBar.classList.remove('drag-over');
+            
+            if (draggedMeal) {
+                const mealId = draggedMeal.dataset.mealId;
+                // Find the actual meal data from our database
+                const menuItem = menuData.find(m => m.id === mealId);
+                const lang = localStorage.getItem('selectedLanguage') || 'en';
+                
+                if (menuItem) {
+                    CartModel.addItem({
+                        id: menuItem.id,
+                        name: menuItem.names[lang] || menuItem.names['en'],
+                        price: menuItem.price,
+                        quantity: 1
+                    });
+                    
+                    // Visual feedback
+                    const mealName = menuItem.names[lang] || menuItem.names['en'];
+                    cartStatus.textContent = `Added ${mealName} to cart!`;
+                    cartBar.classList.add('item-dropped');
+                    cartStatus.style.color = '#e04f26';
+                    cartStatus.style.fontWeight = '700';
+                    
+                    setTimeout(() => {
+                        cartBar.classList.remove('item-dropped');
+                        cartStatus.style.color = '';
+                        cartStatus.style.fontWeight = '500';
+                        updateCartUI(); // Reset the text back to total price
+                    }, 1500);
+                }
+            }
+        });
+    }
+
+// Function to update cart UI
     function updateCartUI() {
         if (!cartStatus) return;
         const total = CartModel.getTotal();
@@ -45,15 +81,27 @@ document.addEventListener('DOMContentLoaded', () => {
         const badge = document.getElementById('cart-badge');
         
         if (count > 0) {
+            // CRITICAL FIX: Remove the translation attribute so the LanguageController 
+            // doesn't force this text back to "You have not added anything yet"
+            cartStatus.removeAttribute('data-i18n');
+            
             cartStatus.textContent = `My Order ${total}€`;
             if (badge) {
                 badge.textContent = count;
                 badge.style.display = 'inline-block';
             }
         } else {
-            cartStatus.textContent = cartStatus.getAttribute('data-i18n') ? 
-                (cartStatus.getAttribute('data-i18n') === 'cart_empty' ? 'You have not added anything yet' : 'My Order 0€') 
-                : 'You have not added anything yet';
+            // If the cart is empty, put the translation attribute back
+            cartStatus.setAttribute('data-i18n', 'cart_empty');
+            
+            // Force the translation immediately based on current language
+            const lang = localStorage.getItem('selectedLanguage') || 'en';
+            if (typeof dictionary !== 'undefined' && dictionary[lang] && dictionary[lang]['cart_empty']) {
+                cartStatus.textContent = dictionary[lang]['cart_empty'];
+            } else {
+                cartStatus.textContent = 'You have not added anything yet';
+            }
+            
             if (badge) badge.style.display = 'none';
         }
     }
@@ -63,39 +111,4 @@ document.addEventListener('DOMContentLoaded', () => {
         CartModel.subscribe(updateCartUI);
         updateCartUI();
     }
-
-    cartBar.addEventListener('drop', (e) => {
-        e.preventDefault();
-        cartBar.classList.remove('drag-over');
-        
-        if (draggedMeal) {
-            const mealName = draggedMeal.querySelector('.meal-name').textContent;
-            
-            // TODO: Take away styling in a JS file, move to CSS
-            // Update the cart text
-            cartStatus.textContent = `Added ${mealName} to cart!`;
-            cartStatus.style.color = '#e04f26';
-            cartStatus.style.fontWeight = '700';
-            
-            if (menuItem) {
-                CartModel.addItem({
-                    id: menuItem.id,
-                    name: menuItem.names[lang] || menuItem.names['en'],
-                    price: menuItem.price,
-                    quantity: 1
-                });
-                
-                // Visual feedback
-                cartBar.classList.add('item-dropped');
-                cartStatus.style.color = '#e04f26';
-                cartStatus.style.fontWeight = '700';
-                
-                setTimeout(() => {
-                    cartBar.classList.remove('item-dropped');
-                    cartStatus.style.color = '';
-                    cartStatus.style.fontWeight = '500';
-                }, 1500);
-            }
-        }
-    });
 });
