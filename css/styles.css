@@ -44,6 +44,21 @@ footer {
     background: transparent;
 }
 
+.bell-svg {
+    width: 23px;             /* Ändra här för att välja storlek (t.ex. 24px eller 40px) */
+    height: 23px;
+    display: block;
+    stroke: #b58c67;         /* Gul färg för Feather-ikon (observera: Feather använder "stroke", inte "fill"!) */
+}
+
+.bell-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;   /* Ta bort understrykning på länken */
+}
+
+
 h1 {
     font-family: "Lora","Lora Placeholder",serif;
     font-size: 40px;
@@ -112,18 +127,17 @@ h1 {
     text-align: center;
     font-family: "Lora","Lora Placeholder",serif;
     font-size: 17px;
+    color: #84a1a0;
 }
 
 /* --- The Active/Selected State --- */
 .category-item.active .category-btn {
     background-color: #b58c67;
-    border-radius: 4px;
     padding-bottom: 8px;
     position: relative;
 }
 
 .category-item.active .category-img {
-    border-radius: 4px 4px 0 0;
     margin-bottom: 4px;
 }
 
@@ -167,6 +181,24 @@ h1 {
 /* =========================================
    Sticky Bottom Cart
    ========================================= */
+.cart-svg {
+    width: 26px;             
+    height: 26px;
+    display: block;
+    stroke: #b58c67;  
+    stroke-width: 1.5;        
+}
+
+.cart-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;     
+    background: none;
+    border: none;
+    padding: 0;
+}
+
 .bottom-cart-bar {
     position: absolute;
     bottom: 0;
@@ -288,35 +320,62 @@ dialog::backdrop {
 }
 
 
-.info-icon, .close-btn {
-    background: none;
-    border: none;
-    cursor: pointer;
-    
-    /* At least 44px is standard for size of modal buttons to be easily tappable on mobile */
-    height: 44px;
-    
+.info-icon {
     display: flex;
     align-items: center;
     justify-content: center;
-    
-    font-size: 24px;
-    transition: opacity 0.2s ease, transform 0.1s ease;
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
 }
 
-.info-icon {
-    color: #C40C0C;
+.info-svg {
+    width: 32px;        
+    height: 32px;
+    display: block;
+    stroke: #1a3d3b;     
+    stroke-width: 1.5;
 }
 
 .close-btn {
-    color: #102b2a; 
-    font-family: sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+.x-svg {
+  width: 32px;         
+  height: 32px;
+  display: block;
+  stroke: #102b2a;        
+  stroke-width: 1.8;
 }
 
 /* This gives a nice feedback without changing the color */
 .info-icon:active, .close-btn:active {
     opacity: 0.6;
     transform: scale(0.9);
+}
+
+
+.edit-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 8px;
+}
+
+.edit-svg {
+  width: 18px;
+  height: 18px;
+  display: block;
+  stroke: #102b2a;  
+  stroke-width: 2;
 }
 
 /* TODO: Change colors to match the theme below */

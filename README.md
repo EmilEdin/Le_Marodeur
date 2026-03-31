@@ -37,3 +37,13 @@ Le_Marodeur/
 ## Setup Instructions
 1. Clone the repository.
 2. Open `index.html` in any modern web browser to run the application (No external dependencies or servers required).
+
+## Image and Icon Attribution
+This application uses photos from [Unsplash](https://unsplash.com/) and icons from [Flaticon](https://www.flaticon.com/).
+
+### Images
+Give cred to everyone here?
+
+### Icons
+Would have in svg if flaticon allowed it for free version
+Use the direct SVG code but can also be retrieved from assets if you want to change the code. 
