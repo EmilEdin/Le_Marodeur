@@ -44,12 +44,14 @@
         <dialog id="delete-confirm-modal" class="meal-modal">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h2 data-i18n="delete_confirm_title" style="margin: 0 auto; color:#8c1819;">Remove Item?</h2>
+                    <h2 data-i18n="delete_confirm_title" class="delete-confirm-title">Remove Item?</h2>
                 </div>
-                <p style="text-align:center; margin: 20px 0; font-size: 16px; color: #555;" data-i18n="delete_confirm_text">Are you sure you want to remove this item from your order?</p>
-                <div class="order-controls" style="justify-content: center; gap: 20px; padding-bottom: 10px;">
-                    <button id="cancel-delete-btn" class="quantity-selector" style="cursor: pointer; padding: 0 20px; background: white; color: #285A48; font-weight:bold; font-size:16px;" data-i18n="cancel_btn">Cancel</button>
-                    <button id="confirm-delete-btn" class="add-btn" style="background-color: #8c1819; flex-grow:0; padding: 0 30px; cursor: pointer;" data-i18n="remove_btn">Remove</button>
+                <p data-i18n="delete_confirm_text" class="delete-confirm-text">
+                    Are you sure you want to remove this item from your order?
+                </p>
+                <div class="order-controls center-gap">
+                    <button id="cancel-delete-btn" class="quantity-selector cancel-btn" data-i18n="cancel_btn">Cancel</button>
+                    <button id="confirm-delete-btn" class="add-btn remove-btn" data-i18n="remove_btn">Remove</button>
                 </div>
             </div>
         </dialog>

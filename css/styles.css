@@ -25,7 +25,7 @@ body {
     width: 100%;           /* Takes up the full width */
     max-width: 1024px;     /* But never gets wider than an iPad in landscape mode */
     min-height: 100vh;     /* Ensure it always covers the full height of the screen */
-    margin: 0 auto;        /* Centers the container on the desktop screen */
+    margin: 0;        /* Centers the container on the desktop screen */
     
     background-color: #1a3d3b;
     position: relative;
@@ -33,14 +33,21 @@ body {
     flex-direction: column;
 }
 
-/* =========================================
-   Header (Call for Service)
-   ========================================= */
+footer {
+    margin-top: auto; /* Pushes the footer to the bottom of the container */
+}
+
 .top-header {
     padding: 15px 20px;
     display: flex;
     justify-content: flex-end; /* Aligns items to the right */
     background: transparent;
+}
+
+h1 {
+    font-family: "Lora","Lora Placeholder",serif;
+    font-size: 40px;
+    color: #ffffff;
 }
 
 .service-action {
@@ -58,9 +65,6 @@ body {
     cursor: pointer;
 }
 
-/* =========================================
-   Horizontal Category Slider (MAX Style)
-   ========================================= */
 .category-slider {
     padding: 0 0 15px 15px;
 }
@@ -105,10 +109,9 @@ body {
 }
 
 .category-name {
-    font-size: 13px;
-    font-weight: 700;
     text-align: center;
-    color: #ffffff;
+    font-family: "Lora","Lora Placeholder",serif;
+    font-size: 17px;
 }
 
 /* --- The Active/Selected State --- */
@@ -425,9 +428,9 @@ dialog::backdrop {
 }
 
 .start-btn {
+    font-family: "Lora","Lora Placeholder",serif;
     padding: 15px 40px;
-    font-size: 18px;
-    font-weight: bold;
+    font-size: 22px;
     color: #ffffff;
     border: 2px solid #b58c67;
     border-radius: 8px;
@@ -486,12 +489,16 @@ dialog::backdrop {
     color: #333;
     padding: 0 10px;
 }
+
 .order-header {
     text-align: center; 
     padding-top: 20px; 
-    font-size: 20px; 
-    color: #555;
     text-transform: uppercase;
+}
+
+.cart-empty-text {
+    text-align: center;
+    color: #84a1a0;
 }
 
 .clickable-footer {

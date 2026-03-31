@@ -40,8 +40,7 @@ document.addEventListener('DOMContentLoaded', () => {
         orderContainer.innerHTML = '';
 
         if (cart.length === 0) {
-            orderContainer.innerHTML = '<p style="text-align: center; color: #666;" data-i18n="cart_empty">Your order is empty.</p>';
-            
+            orderContainer.innerHTML = '<p class="cart-empty-text" data-i18n="cart_empty">Your order is empty.</p>';            
             // Re-apply translation if language controller is loaded
             if (typeof updateContent === 'function') {
                 updateContent();
