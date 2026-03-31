@@ -74,6 +74,11 @@
     </style>
 </head>
 <body>
+    <!-- 
+      Checkout Page 
+      Allows the user to input their table number, select a tip amount, 
+      view the total cost, and select a payment method.
+    -->
     <div class="app-container">
         <header class="top-header" style="justify-content: space-between;">
             <a href="javascript:history.back()" class="icon-btn" style="text-decoration: none; font-size: 24px;">❮</a>
@@ -131,8 +136,15 @@
 
     <script src="../js/model/CartModel.js"></script>
     <script>
+        /**
+         * Checkout inline script
+         * Handles tip selection, total cost calculation, and payment method navigation.
+         */
         let currentTip = 0;
 
+        /**
+         * Updates the subtotal and total UI elements based on the cart and selected tip.
+         */
         function updateTotals() {
             // Get the total cost from the cart
             const subtotal = CartModel.getTotal();
@@ -144,6 +156,11 @@
             document.getElementById('total-amount').innerText = total.toFixed(2);
         }
 
+        /**
+         * Applies the selected tip percentage and highlights the active button.
+         * @param {number} percentage - The tip percentage (e.g. 10, 15, 20).
+         * @param {HTMLElement} buttonElement - The button element that was clicked.
+         */
         function applyTip(percentage, buttonElement) {
             currentTip = percentage;
             
@@ -154,6 +171,10 @@
             updateTotals();
         }
 
+        /**
+         * Validates the table number and navigates to the selected payment method.
+         * @param {string} url - The URL of the payment page to redirect to.
+         */
         function proceedTo(url) {
             const tableNum = document.getElementById('table-number').value;
             if(!tableNum) {

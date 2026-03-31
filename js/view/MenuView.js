@@ -3,6 +3,11 @@
  * Handles the rendering of the menu items and categories with modern classes.
  */
 class MenuView {
+    /**
+     * Renders the category list elements into the DOM.
+     * @param {Array<Object>} categories - The array of categories to render.
+     * @param {string} activeCategoryId - The ID of the currently active category.
+     */
     static renderCategories(categories, activeCategoryId) {
         const container = document.getElementById('category-list');
         if (!container) return;
@@ -27,6 +32,10 @@ class MenuView {
         if (typeof updateUI === 'function') updateUI();
     }
 
+    /**
+     * Renders the list of meal cards for a specific category into the DOM.
+     * @param {Array<Object>} meals - The array of meals to render.
+     */
     static renderMeals(meals) {
         const container = document.getElementById('menu-list');
         if (!container) return;

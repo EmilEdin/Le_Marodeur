@@ -2,6 +2,11 @@
  * dictionary.js
  * Contains the translations for all text in the application for 3 languages: English, Swedish, and French.
  */
+
+/**
+ * Global dictionary object holding key-value pairs for translations.
+ * @type {Object<string, Object<string, string>>}
+ */
 const dictionary = {
     en: {
         welcome_title: "Welcome",

@@ -15,21 +15,28 @@ This is a restaurant ordering system built using vanilla HTML, CSS, and JavaScri
 ```text
 Le_Marodeur/
 ├── css/
-│   └── style.css            # Thematic design and layout
+│   └── styles.css           # Thematic design and layout
+├── html/
+│   ├── call-service.html
+│   ├── checkout.html
+│   ├── menu.html
+│   ├── order.html
+│   ├── payment-card.html
+│   ├── payment-qr.html
+│   └── payment-waiter.html
 ├── js/
 │   ├── data/                # Mock databases and language dictionaries
 │   │   ├── dictionary.js
 │   │   └── menuData.js
 │   ├── model/               # Data and State Layer
-│   │   ├── MenuModel.js
 │   │   └── CartModel.js
 │   ├── view/                # Presentation Layer
-│   │   ├── MenuView.js
-│   │   └── CartView.js
+│   │   └── MenuView.js
 │   ├── controller/          # Logic Layer
+│   │   ├── LanguageController.js
 │   │   ├── MenuController.js
-│   │   └── CartController.js
-│   └── app.js               # Application Entry Point
+│   │   └── OrderController.js
+│   └── order_page.js        # Drag and drop scripts
 ├── index.html               # Main Interface
 └── README.md                # Project Documentation
 ```

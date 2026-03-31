@@ -1,6 +1,7 @@
 /**
  * MenuController.js
  * Bridges interactions from the Menu View to update Models.
+ * Handles category selection, meal modal logic, and adding to cart.
  */
 
 const infoIcon = document.querySelector('.info-icon');
@@ -139,6 +140,10 @@ if (categoryContainer) {
 }
 
 
+/**
+ * Updates the displayed list of meals based on the currently selected category.
+ * Invokes the renderMeals method on the MenuView.
+ */
 window.updateMealsDisplay = function() {
     const filteredMeals = menuData.filter(m => m.categoryId === currentCategory);
     MenuView.renderMeals(filteredMeals);

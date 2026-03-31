@@ -3,6 +3,11 @@
  * Mock data representing the restaurant menu items.
  * Includes translations directly inside the item objects.
  */
+
+/**
+ * Array of category objects defining the sections of the menu.
+ * @type {Array<{id: string, i18n: string, defaultName: string}>}
+ */
 const categoriesData = [
     { id: 'todays_special', i18n: 'category_special', defaultName: "Today's Special" },
     { id: 'starters', i18n: 'category_starters', defaultName: 'Starters' },
@@ -13,6 +18,11 @@ const categoriesData = [
     { id: 'set_meal', i18n: 'category_set', defaultName: '2-Course Set Meal' }
 ];
 
+/**
+ * Array of meal objects representing menu items.
+ * Each item contains pricing, dietary info, translations, and descriptions.
+ * @type {Array<Object>}
+ */
 const menuData = [
     // STARTERS
     {

@@ -1,4 +1,12 @@
-// Function to change language
+/**
+ * LanguageController.js
+ * Handles language switching and updating the UI accordingly.
+ */
+
+/**
+ * Changes the selected application language and triggers UI updates.
+ * @param {string} lang - The language code (e.g., 'en', 'sv', 'fr').
+ */
 function changeLanguage(lang) {
     localStorage.setItem('selectedLanguage', lang); 
     updateUI();
@@ -14,6 +22,10 @@ function changeLanguage(lang) {
     }
 }
 
+/**
+ * Updates all UI elements that have a 'data-i18n' attribute
+ * with the translation corresponding to the selected language.
+ */
 function updateUI() {
     const lang = localStorage.getItem('selectedLanguage') || 'en';
     

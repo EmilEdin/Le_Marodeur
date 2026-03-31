@@ -1,6 +1,15 @@
+/**
+ * order_page.js
+ * Contains UI scripts specifically for the ordering page interactions, 
+ * including drag-and-drop to cart.
+ */
 let draggedMeal = null; 
 
 
+/**
+ * Initializes the drag and drop events for meal cards.
+ * Needs to be re-run whenever meals are re-rendered.
+ */
 window.initDragAndDrop = function() {
     const mealCards = document.querySelectorAll('.meal-card');
     mealCards.forEach(card => {
@@ -74,6 +83,10 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 // Function to update cart UI
+    /**
+     * Updates the persistent cart summary UI element and badge
+     * at the bottom of the order page.
+     */
     function updateCartUI() {
         if (!cartStatus) return;
         const total = CartModel.getTotal();

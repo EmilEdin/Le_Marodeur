@@ -7,7 +7,11 @@
     <link rel="stylesheet" href="../css/styles.css">
 </head>
 <body>
-
+    <!-- 
+      Call Service Page 
+      Allows the user to request assistance from the restaurant staff. 
+      Provides a button that triggers a confirmation popup.
+    -->
     <div class="app-container">
         <header class="top-header" style="justify-content: flex-start;">
             <a href="javascript:history.back()" class="icon-btn" style="text-decoration: none; font-size: 24px;">❮</a>
@@ -33,6 +37,10 @@
     </div>
 
     <script>
+        /**
+         * call-service inline script
+         * Handles the button click to display a service confirmation popup.
+         */
         const btn = document.getElementById('callServiceBtn');
         const popup = document.getElementById('servicePopup');
 

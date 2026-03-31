@@ -1,6 +1,7 @@
 /**
  * OrderController.js
  * Renders the order list in order.html and manages deleting items.
+ * Handles order confirmation Modals and badge updates.
  */
 document.addEventListener('DOMContentLoaded', () => {
     const orderContainer = document.getElementById('order-container');
@@ -35,6 +36,10 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     
+    /**
+     * Renders the current order into the order container.
+     * Maps the cart items to their corresponding translations and creates DOM elements.
+     */
     window.renderOrder = function() {
         const cart = CartModel.getCart();
         orderContainer.innerHTML = '';
@@ -94,6 +99,9 @@ document.addEventListener('DOMContentLoaded', () => {
         updateFooter();
     }
 
+    /**
+     * Updates the footer view including the order total and the cart badge count.
+     */
     window.updateFooter = function() {
         const total = CartModel.getTotal();
         const count = CartModel.getCount();

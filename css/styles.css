@@ -1,6 +1,15 @@
-/* THIS FILE WILL CONTAIN ALL STYLES FOR THE WEBSITE */
-
-/* CONSIDER USING MULTIPLE CSS FILES FOR BETTER ORGANIZATION */
+/**
+ * styles.css
+ * Global stylesheet for the Le Marodeur application.
+ * Defines base resets, typography, layout, components, and responsive design.
+ * Organized by sections:
+ * - Base Resets & App Container
+ * - Top Header & Navigation
+ * - Categories & Menu
+ * - Sticky Bottom Cart
+ * - Modals & Dialogs
+ * - Utilities & Tags
+ */
 
 /* =========================================
    Base Resets & App Container

@@ -48,6 +48,10 @@
     </style>
 </head>
 <body>
+    <!-- 
+      QR Payment Page 
+      Mockup page that simulates showing a QR code to pay or scanning a QR code.
+    -->
     <div class="app-container">
         <header class="top-header" style="display: flex; justify-content: space-between; align-items: center;">
             <a href="javascript:history.back()" class="icon-btn" style="text-decoration: none; font-size: 24px;">❮</a>
@@ -96,6 +100,10 @@
     </div>
 
     <script>
+        /**
+         * Toggles the visibility of the QR payment sections.
+         * @param {string} sectionId - The ID of the section to show.
+         */
         function showSection(sectionId) {
             document.getElementById('qr-options').classList.add('hidden');
             document.getElementById('show-qr-section').classList.add('hidden');
