@@ -68,10 +68,14 @@ document.addEventListener('DOMContentLoaded', () => {
         e.preventDefault();
         cartBar.classList.remove('drag-over');
         
-        if (draggedMeal && typeof CartModel !== 'undefined' && typeof menuData !== 'undefined') {
-            const mealId = draggedMeal.dataset.mealId;
-            const menuItem = menuData.find(item => item.id === mealId);
-            const lang = localStorage.getItem('selectedLanguage') || 'en';
+        if (draggedMeal) {
+            const mealName = draggedMeal.querySelector('.meal-name').textContent;
+            
+            // TODO: Take away styling in a JS file, move to CSS
+            // Update the cart text
+            cartStatus.textContent = `Added ${mealName} to cart!`;
+            cartStatus.style.color = '#e04f26';
+            cartStatus.style.fontWeight = '700';
             
             if (menuItem) {
                 CartModel.addItem({
