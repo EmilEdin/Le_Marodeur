@@ -16,7 +16,7 @@ const categoriesData = [
 const menuData = [
     // STARTERS
     {
-        id: 'starters_1', categoryId: 'starters', price: 110, dietary: ['vegetarian', 'gluten_free'],
+        id: 'starters_1', categoryId: 'starters', price: 110, dietary: ['vegetarian', 'gluten_free', 'onion'],
         names: { en: 'French Onion Soup', sv: 'Fransk Löksoppa', fr: 'Soupe à l\'Oignon' },
         descriptions: {
             en: 'Classic French onion soup with gruyère cheese crouton.',
@@ -54,7 +54,7 @@ const menuData = [
     },
     // MAIN COURSES
     {
-        id: 'main_1', categoryId: 'main_courses', price: 245, dietary: ['dairy'],
+        id: 'main_1', categoryId: 'main_courses', price: 245, dietary: ['dairy', 'onion'],
         names: { en: 'Beef Bourguignon', sv: 'Boeuf Bourguignon', fr: 'Bœuf Bourguignon' },
         descriptions: {
             en: 'Slow-cooked beef stew in red wine with mushrooms and pearl onions.',
@@ -72,7 +72,7 @@ const menuData = [
         }
     },
     {
-        id: 'main_3', categoryId: 'main_courses', price: 195, dietary: ['vegan', 'gluten_free'],
+        id: 'main_3', categoryId: 'main_courses', price: 195, dietary: ['vegan', 'gluten_free', 'onion'],
         names: { en: 'Ratatouille', sv: 'Ratatouille', fr: 'Ratatouille Niçoise' },
         descriptions: {
             en: 'Traditional Provencal stewed vegetables.',

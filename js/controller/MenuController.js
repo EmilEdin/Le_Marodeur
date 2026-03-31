@@ -61,6 +61,7 @@ if (menuListContainer) {
                     else if (tag === 'vegetarian') { tagClass += ' tag-veg'; tagKey = 'tag_vegetarian'; }
                     else if (tag === 'gluten_free') { tagClass += ' tag-gf'; tagKey = 'tag_gluten_free'; }
                     else if (tag === 'dairy') { tagClass += ' tag-allergen'; tagKey = 'tag_dairy'; }
+                    else if (tag === 'onion') { tagClass += ' tag-allergen'; tagKey = 'tag_onion'; }
                     else if (tag === 'non-alcoholic') { tagClass += ' tag-non-alcoholic'; tagKey = 'tag_non_alcoholic'; }
                     
                     const span = document.createElement('span');
