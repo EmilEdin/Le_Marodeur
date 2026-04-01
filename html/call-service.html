@@ -13,14 +13,21 @@
       Provides a button that triggers a confirmation popup.
     -->
     <div class="app-container">
-        <header class="top-header" style="justify-content: flex-start;">
-            <a href="javascript:history.back()" class="icon-btn" style="text-decoration: none; font-size: 24px;">❮</a>
-            <div class="language-picker">
-                <select onchange="changeLanguage(this.value)">
-                    <option value="en">EN</option>
-                    <option value="sv">SV</option>
-                    <option value="fr">FR</option>
-                </select>
+        <header class="top-header" style="justify-content: space-between; align-items: center; padding: 16px 24px;">
+            <a href="javascript:history.back()" class="icon-btn back-btn" aria-label="Back" style="display: flex; align-items: center; justify-content: center;">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#b58c67" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="width: 28px; height: 28px;">
+                    <polyline points="15 18 9 12 15 6"></polyline>
+                </svg>
+            </a>
+            
+            <div style="display: flex; align-items: center; gap: 20px;">
+                <div class="language-picker">
+                    <select onchange="changeLanguage(this.value)" class="modern-select">
+                        <option value="en">ENG</option>
+                        <option value="sv">SWE</option>
+                        <option value="fr">FRA</option>
+                    </select>
+                </div>
             </div>
         </header>
 

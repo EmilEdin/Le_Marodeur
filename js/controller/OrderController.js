@@ -12,6 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const cancelDeleteBtn = document.getElementById('cancel-delete-btn');
     
     let itemToDeleteIndex = null;
+    let draggedItemIndex = null;
 
     if (confirmDeleteBtn && cancelDeleteBtn && deleteModal) {
         confirmDeleteBtn.onclick = () => {
@@ -55,6 +56,67 @@ document.addEventListener('DOMContentLoaded', () => {
             cart.forEach((item, index) => {
                 const row = document.createElement('tr');
                 row.className = 'order-item-row';
+                row.draggable = true;
+                
+                // Add drag and drop functionality
+                row.addEventListener('dragstart', (e) => {
+                    draggedItemIndex = index;
+                    e.dataTransfer.effectAllowed = 'move';
+                    e.dataTransfer.setData('text/plain', index);
+                    setTimeout(() => row.classList.add('dragging'), 0);
+                });
+                
+                row.addEventListener('dragend', () => {
+                    draggedItemIndex = null;
+                    row.classList.remove('dragging');
+                    document.querySelectorAll('.order-item-row').forEach(r => {
+                        r.classList.remove('drag-over-top', 'drag-over-bottom');
+                    });
+                });
+                
+                row.addEventListener('dragover', (e) => {
+                    e.preventDefault();
+                    if (draggedItemIndex === null || draggedItemIndex === index) return;
+                    
+                    const bounding = row.getBoundingClientRect();
+                    const offset = bounding.y + (bounding.height / 2);
+                    
+                    row.classList.remove('drag-over-top', 'drag-over-bottom');
+                    if (e.clientY - offset > 0) {
+                        row.classList.add('drag-over-bottom');
+                    } else {
+                        row.classList.add('drag-over-top');
+                    }
+                });
+                
+                row.addEventListener('dragleave', () => {
+                    row.classList.remove('drag-over-top', 'drag-over-bottom');
+                });
+                
+                row.addEventListener('drop', (e) => {
+                    e.preventDefault();
+                    row.classList.remove('drag-over-top', 'drag-over-bottom');
+                    
+                    if (draggedItemIndex !== null && draggedItemIndex !== index) {
+                        const bounding = row.getBoundingClientRect();
+                        const offset = bounding.y + (bounding.height / 2);
+                        
+                        let targetIndex = index;
+                        // If dropping on the bottom half, place it after
+                        if (e.clientY - offset > 0) {
+                            targetIndex = index + 1;
+                        }
+                        
+                        // Adjust target index if moving downwards
+                        if (draggedItemIndex < targetIndex) {
+                            targetIndex--;
+                        }
+                        
+                        if (draggedItemIndex !== targetIndex) {
+                            CartModel.moveItem(draggedItemIndex, targetIndex);
+                        }
+                    }
+                });
                 
                 let displayName = item.name;
                 if (typeof menuData !== 'undefined') {

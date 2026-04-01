@@ -43,6 +43,20 @@ class CartModel {
     }
 
     /**
+     * Moves an item from one index to another in the cart (Drag and Drop support).
+     * @param {number} fromIndex - Original index of the item.
+     * @param {number} toIndex - New index of the item.
+     */
+    static moveItem(fromIndex, toIndex) {
+        const cart = this.getCart();
+        if (fromIndex >= 0 && fromIndex < cart.length && toIndex >= 0 && toIndex < cart.length) {
+            const [movedItem] = cart.splice(fromIndex, 1);
+            cart.splice(toIndex, 0, movedItem);
+            this.saveCart(cart);
+        }
+    }
+
+    /**
      * Clears all items from the cart.
      */
     static clearCart() {
