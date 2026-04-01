@@ -9,7 +9,7 @@
         .checkout-container {
             display: flex;
             flex-direction: column;
-            gap: 20px;
+            gap: 24px;
             padding: 20px;
             text-align: center;
             max-width: 400px;
@@ -19,57 +19,99 @@
         .table-input-group {
             display: flex;
             flex-direction: column;
-            gap: 10px;
-            margin-bottom: 20px;
+            gap: 12px;
             text-align: left;
         }
         .table-input-group label {
             font-size: 16px;
             font-weight: 600;
-            color: #333;
+            color: #84a1a0;
         }
         .table-input-group input {
-            padding: 12px;
+            padding: 16px;
             font-size: 18px;
-            border: 1px solid #ccc;
-            border-radius: 8px;
+            background-color: #102b2a;
+            color: #ffffff;
+            border: 2px solid #0b1e1d;
+            border-radius: 12px;
+            font-family: inherit;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+        .table-input-group input:focus {
+            border-color: #b58c67;
+        }
+        .table-input-group input::placeholder {
+            color: rgba(132, 161, 160, 0.4);
+        }
+        
+        .checkout-pay-btn {
+            width: 100%;
+            padding: 18px;
+            font-size: 18px;
+            font-weight: 600;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: transform 0.1s, background-color 0.2s;
+            margin-bottom: 12px;
             font-family: inherit;
         }
-        .payment-btn {
-            width: 100%;
-            margin-bottom: 12px;
+        .checkout-pay-btn:active {
+            transform: scale(0.98);
         }
-        .transparent-btn {
+        .primary-pay-btn {
+            background-color: #b58c67;
+            color: #ffffff;
+            border: none;
+            box-shadow: 0 4px 15px rgba(181, 140, 103, 0.3);
+        }
+        .primary-pay-btn:hover {
+            background-color: #9a7554;
+        }
+        .secondary-pay-btn {
             background-color: transparent;
             color: #b58c67;
             border: 2px solid #b58c67;
         }
+        .secondary-pay-btn:hover {
+            background-color: rgba(181, 140, 103, 0.1);
+        }
         
         /* New Tipping Styles */
         .tip-section {
-            background: #e2e2e2;
-            padding: 15px;
-            border-radius: 12px;
-            margin-bottom: 20px;
+            background: #102b2a;
+            padding: 24px;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(132, 161, 160, 0.1);
         }
         .tip-buttons {
             display: flex;
-            gap: 10px;
+            gap: 12px;
             justify-content: center;
-            margin: 15px 0;
+            margin: 20px 0;
         }
         .tip-btn {
-            padding: 8px 15px;
-            border: 2px solid #102b2a;
-            background: white;
-            color: #102b2a;
-            border-radius: 8px;
-            font-weight: bold;
+            padding: 12px 10px;
+            border: 2px solid #1a3d3b;
+            background: transparent;
+            color: #84a1a0;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 16px;
             cursor: pointer;
+            transition: all 0.2s;
+            flex: 1;
+        }
+        .tip-btn:hover {
+            border-color: #84a1a0;
+            color: #ffffff;
         }
         .tip-btn.active {
-            background: #102b2a;
-            color: white;
+            background: #b58c67;
+            color: #ffffff;
+            border-color: #b58c67;
+            box-shadow: 0 4px 10px rgba(181, 140, 103, 0.3);
         }
     </style>
 </head>
@@ -98,7 +140,7 @@
 
         <main class="main-content">
             <div class="checkout-container">
-                <h1 class="order-header" data-i18n="checkout_title" style="margin-bottom: 20px; color: #102b2a;">Checkout</h1>
+                <h1 class="order-header" data-i18n="checkout_title" style="margin-bottom: 8px; color: #ffffff;">Checkout</h1>
                 
                 <div class="table-input-group">
                     <label for="table-number" data-i18n="table_number">Table Number:</label>
@@ -106,12 +148,12 @@
                 </div>
 
                 <div class="tip-section">
-                    <p style="font-size: 16px; color: #333;">
+                    <p style="font-size: 16px; color: #84a1a0;">
                         <span data-i18n="subtotal">Subtotal:</span> 
-                        <span id="subtotal-amount" style="font-weight: bold;">0</span>€
+                        <span id="subtotal-amount" style="font-weight: bold; color: #ffffff;">0</span><span style="color: #ffffff;">€</span>
                     </p>
                     
-                    <p style="margin-top: 15px; font-weight: 600;" data-i18n="add_tip">Add a tip:</p>
+                    <p style="margin-top: 20px; font-weight: 600; color: #ffffff;" data-i18n="add_tip">Add a tip:</p>
                     <div class="tip-buttons">
                         <button class="tip-btn active" onclick="applyTip(0, this)">0%</button>
                         <button class="tip-btn" onclick="applyTip(10, this)">10%</button>
@@ -119,16 +161,16 @@
                         <button class="tip-btn" onclick="applyTip(20, this)">20%</button>
                     </div>
 
-                    <p style="font-size: 20px; font-weight: bold; color: #102b2a; margin-top: 15px;">
+                    <p style="font-size: 20px; font-weight: bold; color: #b58c67; margin-top: 20px; border-top: 1px solid rgba(132,161,160,0.2); padding-top: 15px;">
                         <span data-i18n="total_to_pay">Total to Pay:</span> 
                         <span id="total-amount">0</span>€
                     </p>
                 </div>
 
                 <div class="payment-options">
-                    <button class="start-btn payment-btn" onclick="proceedTo('payment-qr.html')" data-i18n="pay_by_qr">Pay by QR Code</button>
-                    <button class="start-btn payment-btn" onclick="proceedTo('payment-card.html')" data-i18n="pay_by_card">Pay by Card</button>
-                    <button class="start-btn payment-btn transparent-btn" onclick="proceedTo('payment-waiter.html')" data-i18n="pay_at_table">Pay at Table</button>
+                    <button class="checkout-pay-btn primary-pay-btn" onclick="proceedTo('payment-qr.html')" data-i18n="pay_by_qr">Pay by QR Code</button>
+                    <button class="checkout-pay-btn primary-pay-btn" onclick="proceedTo('payment-card.html')" data-i18n="pay_by_card">Pay by Card</button>
+                    <button class="checkout-pay-btn secondary-pay-btn" onclick="proceedTo('payment-waiter.html')" data-i18n="pay_at_table">Pay at Table</button>
                 </div>
             </div>
         </main>
