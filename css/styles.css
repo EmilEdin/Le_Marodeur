@@ -44,17 +44,39 @@ footer {
 }
 
 .top-header {
-    padding: 15px 20px;
+    padding: 16px 24px;
     display: flex;
-    justify-content: flex-end; /* Aligns items to the right */
+    justify-content: space-between;
+    align-items: center;
     background: transparent;
 }
 
+.top-header.header-right {
+    justify-content: flex-end;
+}
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
 .bell-svg {
-    width: 23px;             /* Ändra här för att välja storlek (t.ex. 24px eller 40px) */
-    height: 23px;
+    width: 26px;
+    height: 26px;
     display: block;
-    stroke: #b58c67;         /* Gul färg för Feather-ikon (observera: Feather använder "stroke", inte "fill"!) */
+    stroke: #b58c67;
+}
+
+.back-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.back-icon {
+    width: 28px;
+    height: 28px;
 }
 
 .bell-icon {
@@ -63,6 +85,18 @@ footer {
     justify-content: center;
     text-decoration: none;   
     transition: transform 0.2s ease;
+    position: relative;
+}
+
+.notification-dot {
+    position: absolute;
+    top: 0px;
+    right: 2px;
+    width: 8px;
+    height: 8px;
+    background-color: #ef4444;
+    border-radius: 50%;
+    border: 2px solid #1a3d3b;
 }
 
 .bell-icon:hover, .back-btn:hover {
@@ -663,6 +697,103 @@ dialog::backdrop {
     box-shadow: 0 2px 10px rgba(181, 140, 103, 0.15);
 }
 
+.btn-full {
+    margin-top: 20px;
+    width: 100%;
+}
+
+.btn-secondary {
+    background-color: #333333 !important;
+}
+
+/* =========================================
+   Layout & Typography Utilities
+   ========================================= */
+.center-layout {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-grow: 1;
+    padding: 20px;
+}
+
+.center-text {
+    text-align: center;
+}
+
+.layout-padded {
+    padding: 20px;
+}
+
+.flex-1 {
+    flex: 1;
+}
+
+.mb-xs { margin-bottom: 10px; }
+.mb-sm { margin-bottom: 20px; }
+.mb-md { margin-bottom: 30px; }
+.mb-lg { margin-bottom: 40px; }
+.mt-sm { margin-top: 10px; }
+
+.status-emoji {
+    font-size: 80px;
+    margin-bottom: 20px;
+}
+
+.status-text {
+    font-size: 18px;
+    color: #555555;
+    line-height: 1.5;
+    margin-bottom: 40px;
+    max-width: 350px;
+}
+
+.checkout-heading {
+    margin-bottom: 8px;
+    color: #ffffff;
+}
+
+.checkout-subtitle {
+    font-size: 16px;
+    color: #84a1a0;
+}
+
+.text-bold-white {
+    font-weight: bold;
+    color: #ffffff;
+}
+
+.text-white {
+    color: #ffffff;
+}
+
+.tip-heading {
+    margin-top: 20px;
+    font-weight: 600;
+    color: #ffffff;
+}
+
+.total-price-row {
+    font-size: 20px;
+    font-weight: bold;
+    color: #b58c67;
+    margin-top: 20px;
+    border-top: 1px solid rgba(132,161,160,0.2);
+    padding-top: 15px;
+}
+
+.qr-options-flex {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 30px;
+}
+
+.dietary-title {
+    margin-top: 10px;
+    font-size: 16px;
+}
 
 /* =========================================
    Call Service Feature Styles
