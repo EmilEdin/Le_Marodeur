@@ -171,28 +171,29 @@
                 <h2 id="modal-title" data-i18n="modal_title">The name of the food</h2>
                 
                 <div class="order-controls">
-                    <div class="quantity-selector">
-                    <span class="edit-icon" aria-label="Redigera mängd">
-                        <svg class="edit-svg" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2"
-                            stroke-linecap="round" stroke-linejoin="round"
-                            aria-hidden="true">
-                        <path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path>
-                        </svg>
-                    </span>
-                    <select id="meal-quantity">
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                    </select>
+                    <div class="modal-price-row">
+                        <span class="modal-price-label" data-i18n="total_to_pay">Total to Pay:</span>
+                        <span id="modal-price" class="modal-price-amount">93:-</span>
                     </div>
 
-                    <button class="add-btn" id="add-to-order">
-                        <span>+</span>
-                        <span id="modal-price">93:-</span>
-                    </button>
+                    <div class="modal-controls-row">
+                        <div class="quantity-selector">
+                            <select id="meal-quantity">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                            </select>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="#102b2a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="6 9 12 15 18 9"></polyline>
+                            </svg>
+                        </div>
+
+                        <button class="add-btn" id="add-to-order">
+                            <span data-i18n="add_to_order" style="font-weight: 600; font-size: 18px;">Add</span>
+                        </button>
+                    </div>
                 </div>
             </div>
         </dialog>

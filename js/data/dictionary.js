@@ -64,6 +64,8 @@ const dictionary = {
         meal_water: "Perrier Sparkling Water",
         meal_formule: "Formule du Midi",
         meal_plat_du_jour: "Plat du Jour (Bouillabaisse)",
+        
+        add_to_order: "Add",
 
         checkout_title: "Checkout",
         table_number: "Table Number:",
@@ -130,6 +132,8 @@ const dictionary = {
         meal_water: "Perrier Kolsyrat Vatten",
         meal_formule: "Dagens 2-rätters",
         meal_plat_du_jour: "Dagens Rätt (Bouillabaisse)",
+        
+        add_to_order: "Lägg till",
 
         checkout_title: "Betalning",
         table_number: "Bordsnummer:",
@@ -196,6 +200,8 @@ const dictionary = {
         meal_water: "Eau Gazeuse Perrier",
         meal_formule: "Formule du Midi",
         meal_plat_du_jour: "Plat du Jour (Bouillabaisse)",
+        
+        add_to_order: "Ajouter",
 
         checkout_title: "Paiement",
         table_number: "Numéro de table :",
