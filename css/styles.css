@@ -279,24 +279,14 @@ h1 {
 }
 
 .bottom-cart-bar {
-    position: sticky;
-    bottom: 20px;
-    margin: 0 20px 20px 20px;
     background-color: #102b2a;
     padding: 18px 24px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    z-index: 50;
-    border-radius: 16px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
     border: 1px solid rgba(132, 161, 160, 0.15); /* subtle teal border */
     transition: transform 0.2s, box-shadow 0.2s;
-}
-
-.bottom-cart-bar:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.5);
 }
 
 .bottom-cart-bar:active {
