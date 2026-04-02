@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome - Restaurant App</title>
+    <title>Welcome - Le Marodeur</title>
     <link rel="stylesheet" href="css/styles.css">
 </head>
 
@@ -25,7 +25,7 @@
                     </select>
                 </div>
                 <div class="service-action">
-                    <a href="html/call-service.html" class="icon-btn bell-icon" aria-label="Notifications">
+                    <a href="html/call-service.html" class="icon-btn bell-icon" aria-label="Notifications" data-i18n-aria-label="notifications">
                         <svg class="bell-svg" viewBox="0 0 24 24" fill="none"
                             stroke="#b58c67" stroke-width="2.5"
                             stroke-linecap="round" stroke-linejoin="round"
@@ -40,7 +40,7 @@
         </header>
 
         <main class="welcome-content">                
-            <h1 class="restaurant-name" data-i18n="restaurant_name">Five Pots and One Caulderon</h1>
+            <h1 class="restaurant-name" data-i18n="restaurant_name">Le Marodeur</h1>
             <p class="welcome-text" data-i18n="welcome_text">Scan, order, and enjoy right at your table.</p>
                 
             <a href="html/menu.html" class="start-btn" data-i18n="view_menu">View Menu</a>
@@ -48,10 +48,7 @@
 
     </div>
     <script src="js/data/dictionary.js"></script>
-    <script src="js/data/menuData.js"></script>
-
-    <script src="js/order_page.js"></script>
+    <script src="js/utils/AppUtils.js"></script>
     <script src="js/controller/LanguageController.js"></script>
-    <script src="js/controller/MenuController.js"></script>
 </body>
 </html>

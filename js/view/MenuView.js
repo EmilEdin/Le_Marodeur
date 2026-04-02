@@ -20,7 +20,7 @@ class MenuView {
 
             return `
             <li class="category-item ${cat.id === activeCategoryId ? 'active' : ''}" data-category-id="${cat.id}">
-                <button type="button" class="category-btn">
+                <button type="button" class="category-btn" ${cat.id === activeCategoryId ? 'aria-current="true"' : ''}>
                     <img src="${imgSrc}" alt="" class="category-img">
                     <span class="category-name" data-i18n="${cat.i18n}">${cat.defaultName}</span>
                 </button>
@@ -40,12 +40,29 @@ class MenuView {
         const container = document.getElementById('menu-list');
         if (!container) return;
         
-        const lang = localStorage.getItem('selectedLanguage') || 'en';
-        
-        container.innerHTML = meals.map(meal => `
-            <article class="meal-card" data-meal-id="${meal.id}" draggable="true">
-                <h2 class="meal-name">${meal.names[lang] || meal.names['en']}</h2>
+        const lang = AppUtils.getLanguage();
+
+        if (meals.length === 0) {
+            container.innerHTML = `
+                <div class="menu-empty-state">
+                    <p>${AppUtils.translate('no_meals_available', 'No meals available right now.')}</p>
+                </div>
+            `;
+            return;
+        }
+
+        container.innerHTML = meals.map((meal) => {
+            const descriptions = meal.descriptions || {};
+
+            return `
+            <article class="meal-card" data-meal-id="${meal.id}" draggable="true" tabindex="0">
+                <div class="meal-copy">
+                    <h2 class="meal-name">${meal.names[lang] || meal.names.en}</h2>
+                    <p class="meal-description-preview">${descriptions[lang] || descriptions.en || ''}</p>
+                </div>
+                <span class="meal-price">${AppUtils.formatCurrency(meal.price)}</span>
             </article>
-        `).join('');
+        `;
+        }).join('');
     }
 }

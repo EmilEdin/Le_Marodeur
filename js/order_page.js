@@ -54,19 +54,23 @@ document.addEventListener('DOMContentLoaded', () => {
                 const mealId = draggedMeal.dataset.mealId;
                 
                 const menuItem = menuData.find(m => m.id === mealId);
-                const lang = localStorage.getItem('selectedLanguage') || 'en';
+                const lang = AppUtils.getLanguage();
                 
                 if (menuItem) {
                     CartModel.addItem({
                         id: menuItem.id,
-                        name: menuItem.names[lang] || menuItem.names['en'],
+                        name: menuItem.names[lang] || menuItem.names.en,
                         price: menuItem.price,
-                        quantity: 1
+                        quantity: 1,
+                        guestNumber: typeof getCurrentGuestNumber === 'function' ? getCurrentGuestNumber() : 0
                     });
                     
                     
-                    const mealName = menuItem.names[lang] || menuItem.names['en'];
-                    cartStatus.textContent = `Added ${mealName} to cart!`;
+                    const mealName = menuItem.names[lang] || menuItem.names.en;
+                    cartStatus.textContent = AppUtils.interpolate(
+                        AppUtils.translate('added_to_cart', 'Added {meal} to cart!'),
+                        { meal: mealName }
+                    );
                     cartBar.classList.add('item-dropped');
                     cartStatus.style.color = '#e04f26';
                     cartStatus.style.fontWeight = '700';
@@ -87,7 +91,7 @@ document.addEventListener('DOMContentLoaded', () => {
      * Updates the persistent cart summary UI element and badge
      * at the bottom of the order page.
      */
-    function updateCartUI() {
+    window.updateCartSummary = function() {
         if (!cartStatus) return;
         const total = CartModel.getTotal();
         const count = CartModel.getCount();
@@ -96,13 +100,9 @@ document.addEventListener('DOMContentLoaded', () => {
         if (count > 0) {
             cartStatus.removeAttribute('data-i18n');
             
-            const lang = localStorage.getItem('selectedLanguage') || 'en';
-            let orderText = 'My Order';
-            if (typeof dictionary !== 'undefined' && dictionary[lang] && dictionary[lang]['my_order']) {
-                orderText = dictionary[lang]['my_order'];
-            }
+            const orderText = AppUtils.translate('my_order', 'My Order');
             
-            cartStatus.textContent = `${orderText} ${total}€`;
+            cartStatus.textContent = `${orderText} ${AppUtils.formatCurrency(total)}`;
             if (badge) {
                 badge.textContent = count;
                 badge.style.display = 'inline-block';
@@ -112,20 +112,15 @@ document.addEventListener('DOMContentLoaded', () => {
             cartStatus.setAttribute('data-i18n', 'cart_empty');
             
             // Force the translation immediately based on current language
-            const lang = localStorage.getItem('selectedLanguage') || 'en';
-            if (typeof dictionary !== 'undefined' && dictionary[lang] && dictionary[lang]['cart_empty']) {
-                cartStatus.textContent = dictionary[lang]['cart_empty'];
-            } else {
-                cartStatus.textContent = 'You have not added anything yet';
-            }
+            cartStatus.textContent = AppUtils.translate('cart_empty', 'You have not added anything yet');
             
             if (badge) badge.style.display = 'none';
         }
-    }
+    };
 
     // Initialize UI
     if (typeof CartModel !== 'undefined') {
-        CartModel.subscribe(updateCartUI);
-        updateCartUI();
+        CartModel.subscribe(updateCartSummary);
+        updateCartSummary();
     }
 });

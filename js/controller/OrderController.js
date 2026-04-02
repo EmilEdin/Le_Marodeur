@@ -42,13 +42,17 @@ document.addEventListener('DOMContentLoaded', () => {
      * Maps the cart items to their corresponding translations and creates DOM elements.
      */
     window.renderOrder = function() {
+        if (!orderContainer) {
+            return;
+        }
+
         const cart = CartModel.getCart();
         orderContainer.innerHTML = '';
-        const lang = localStorage.getItem('selectedLanguage') || 'en';
+        const lang = AppUtils.getLanguage();
 
         if (cart.length === 0) {
-            orderContainer.innerHTML = '<tr><td colspan="5" style="text-align:center; padding:30px;"><p class="cart-empty-text" data-i18n="cart_empty">Your order is empty.</p></td></tr>';            
-            
+            orderContainer.innerHTML = `<tr><td colspan="5" style="text-align:center; padding:30px;"><p class="cart-empty-text" data-i18n="cart_empty">${AppUtils.translate('cart_empty', 'You have not added anything yet')}</p></td></tr>`;
+
             if (typeof updateUI === 'function') {
                 updateUI();
             }
@@ -127,24 +131,81 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
 
                 const nameTd = document.createElement('td');
-                nameTd.textContent = displayName;
+                const nameWrapper = document.createElement('div');
+                nameWrapper.className = 'order-item-name';
+                nameWrapper.textContent = displayName;
+                nameTd.appendChild(nameWrapper);
+
+                if (item.guestNumber) {
+                    const guestMeta = document.createElement('div');
+                    guestMeta.className = 'order-item-meta';
+                    guestMeta.textContent = AppUtils.interpolate(
+                        AppUtils.translate('guest_number', 'Guest {number}'),
+                        { number: item.guestNumber }
+                    );
+                    nameTd.appendChild(guestMeta);
+                }
 
                 const priceTd = document.createElement('td');
-                priceTd.textContent = `${item.price}:-`;
+                priceTd.textContent = AppUtils.formatCurrency(item.price);
 
                 const qtyTd = document.createElement('td');
-                qtyTd.textContent = item.quantity;
+                const quantitySelect = document.createElement('select');
+                quantitySelect.className = 'cart-qty-select';
+
+                const maxSelectableQuantity = Math.max(item.quantity, 10);
+                for (let value = 1; value <= maxSelectableQuantity; value++) {
+                    const option = document.createElement('option');
+                    option.value = value;
+                    option.textContent = value;
+                    option.selected = value === item.quantity;
+                    quantitySelect.appendChild(option);
+                }
+
+                quantitySelect.addEventListener('change', (event) => {
+                    CartModel.updateItemQuantity(index, Number(event.target.value));
+                });
+
+                qtyTd.appendChild(quantitySelect);
 
                 const totalTd = document.createElement('td');
-                totalTd.textContent = `${item.price * item.quantity}:-`;
+                totalTd.textContent = AppUtils.formatCurrency(item.price * item.quantity);
 
                 const actionTd = document.createElement('td');
                 actionTd.className = 'action-cell';
-                
+
+                const actionsWrapper = document.createElement('div');
+                actionsWrapper.className = 'item-actions';
+
+                const moveUpBtn = document.createElement('button');
+                moveUpBtn.className = 'order-action-btn';
+                moveUpBtn.type = 'button';
+                moveUpBtn.textContent = '↑';
+                moveUpBtn.disabled = index === 0;
+                moveUpBtn.setAttribute('aria-label', AppUtils.translate('move_item_up', 'Move item up'));
+                moveUpBtn.onclick = () => {
+                    if (index > 0) {
+                        CartModel.moveItem(index, index - 1);
+                    }
+                };
+
+                const moveDownBtn = document.createElement('button');
+                moveDownBtn.className = 'order-action-btn';
+                moveDownBtn.type = 'button';
+                moveDownBtn.textContent = '↓';
+                moveDownBtn.disabled = index === cart.length - 1;
+                moveDownBtn.setAttribute('aria-label', AppUtils.translate('move_item_down', 'Move item down'));
+                moveDownBtn.onclick = () => {
+                    if (index < cart.length - 1) {
+                        CartModel.moveItem(index, index + 1);
+                    }
+                };
+
                 const deleteBtn = document.createElement('button');
-                deleteBtn.className = 'delete-btn-table';
+                deleteBtn.className = 'order-action-btn delete-btn-table';
+                deleteBtn.type = 'button';
                 deleteBtn.innerHTML = '✕';
-                deleteBtn.setAttribute('aria-label', 'Remove item');
+                deleteBtn.setAttribute('aria-label', AppUtils.translate('remove_item', 'Remove item'));
                 deleteBtn.onclick = () => {
                     itemToDeleteIndex = index;
                     if (deleteModal) {
@@ -153,8 +214,10 @@ document.addEventListener('DOMContentLoaded', () => {
                         CartModel.removeItem(index);
                     }
                 };
-                
-                actionTd.appendChild(deleteBtn);
+                actionsWrapper.appendChild(moveUpBtn);
+                actionsWrapper.appendChild(moveDownBtn);
+                actionsWrapper.appendChild(deleteBtn);
+                actionTd.appendChild(actionsWrapper);
                 
                 row.appendChild(nameTd);
                 row.appendChild(priceTd);
@@ -173,22 +236,22 @@ document.addEventListener('DOMContentLoaded', () => {
      * Updates the footer view including the order total and the cart badge count.
      */
     window.updateFooter = function() {
+        if (!orderTotalText) {
+            return;
+        }
+
         const total = CartModel.getTotal();
         const count = CartModel.getCount();
-        const lang = localStorage.getItem('selectedLanguage') || 'en';
-        
-        
-        const toPaymentText = { en: 'To Payment', sv: 'Till Betalning', fr: 'Vers le Paiement' };
-        const prefix = toPaymentText[lang] || toPaymentText['en'];
+        const prefix = AppUtils.translate('to_payment', 'To Payment');
         
         if (count > 0) {
-            orderTotalText.textContent = `${prefix} ${total}€`;
+            orderTotalText.textContent = `${prefix} ${AppUtils.formatCurrency(total)}`;
             if (badge) {
                 badge.textContent = count;
                 badge.style.display = 'inline-block';
             }
         } else {
-            orderTotalText.textContent = `${prefix} 0€`;
+            orderTotalText.textContent = `${prefix} ${AppUtils.formatCurrency(0)}`;
             if (badge) badge.style.display = 'none';
         }
     }

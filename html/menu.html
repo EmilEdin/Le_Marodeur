@@ -4,7 +4,7 @@
     <link rel="stylesheet" href="../css/styles.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Table Ordering App</title>
+    <title>Menu - Le Marodeur</title>
 </head>
 <body>
     <!-- 
@@ -15,7 +15,7 @@
     <div class="app-container">
 
         <header class="top-header">
-            <a href="javascript:history.back()" class="icon-btn back-btn" aria-label="Back">
+            <a href="javascript:history.back()" class="icon-btn back-btn" aria-label="Back" data-i18n-aria-label="back">
                 <svg class="back-icon" viewBox="0 0 24 24" fill="none" stroke="#b58c67" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                     <polyline points="15 18 9 12 15 6"></polyline>
                 </svg>
@@ -30,7 +30,7 @@
                     </select>
                 </div>
                 <div class="service-action">
-                    <a href="call-service.html" class="icon-btn bell-icon" aria-label="Notifications">
+                    <a href="call-service.html" class="icon-btn bell-icon" aria-label="Notifications" data-i18n-aria-label="notifications">
                         <svg class="bell-svg" viewBox="0 0 24 24" fill="none"
                             stroke="#b58c67" stroke-width="2.5"
                             stroke-linecap="round" stroke-linejoin="round"
@@ -45,62 +45,28 @@
         </header>
 
         <main class="main-content">
-            <nav class="category-slider" aria-label="Menu Categories">
-                <ul class="category-list" id="category-list">
-                    <li class="category-item active">
-                        <button type="button" class="category-btn" aria-current="true">
-                            <img src="../assets/images/appetizer.jpg" alt="" class="category-img">
-                            <span class="category-name" data-i18n="category_meal_1">Limited Deluxe</span>
-                        </button>
-                    </li>
-                    
-                    <li class="category-item">
-                        <button type="button" class="category-btn">
-                            <img src="../assets/images/dessert.jpg" alt="" class="category-img">
-                            <span class="category-name" data-i18n="category_meal_2">Måltider</span>
-                        </button>
-                    </li>
-                    
-                    <li class="category-item">
-                        <button type="button" class="category-btn">
-                            <img src="../assets/images/wine.jpg" alt="" class="category-img">
-                            <span class="category-name" data-i18n="category_meal_3">Impossible</span>
-                        </button>
-                    </li>
-                    
-                    <li class="category-item">
-                        <button type="button" class="category-btn">
-                            <img src="../assets/images/appetizer.jpg" alt="" class="category-img">
-                            <span class="category-name" data-i18n="category_meal_4">Supreme Green</span>
-                        </button>
-                    </li>
+            <section class="order-mode-panel" aria-label="Order mode">
+                <p class="order-mode-label" data-i18n="order_mode">Order Mode</p>
+                <div class="order-mode-toggle">
+                    <button type="button" class="order-mode-btn active" data-order-mode="single" data-i18n="single_order">Single Order</button>
+                    <button type="button" class="order-mode-btn" data-order-mode="group" data-i18n="group_order">Group Order</button>
+                </div>
+                <div id="guest-selection-controls" class="guest-selection-controls hidden">
+                    <label for="active-guest-select" class="guest-selection-label" data-i18n="guest_label">Guest</label>
+                    <div class="quantity-selector guest-selector">
+                        <select id="active-guest-select" aria-label="Guest"></select>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="#102b2a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </div>
+                </div>
+            </section>
 
-                    <li class="category-item">
-                        <button type="button" class="category-btn">
-                            <img src="../assets/images/appetizer.jpg" alt="" class="category-img">
-                            <span class="category-name">Kyckling</span>
-                        </button>
-                    </li>
-                </ul>
+            <nav class="category-slider" aria-label="Menu Categories">
+                <ul class="category-list" id="category-list"></ul>
             </nav>
 
-            <section class="menu-list" id="menu-list" aria-label="Available Meals">
-                <article class="meal-card" data-meal-id="starters_1">
-                    <h2 class="meal-name" data-i18n="meal_1_name">French Onion Soup</h2> 
-                </article>
-                
-                <article class="meal-card" data-meal-id="main_1">
-                    <h2 class="meal-name" data-i18n="meal_2_name">Beef Bourguignon</h2>
-                </article>
-                
-                <article class="meal-card" data-meal-id="main_2">
-                    <h2 class="meal-name" data-i18n="meal_3_name">Ratatouille</h2>
-                </article>
-                
-                <article class="meal-card" data-meal-id="dessert_1">
-                    <h2 class="meal-name" data-i18n="meal_4_name">Crème Brûlée</h2>
-                </article>
-            </section>
+            <section class="menu-list" id="menu-list" aria-label="Available Meals"></section>
         </main>
 
         <footer class="bottom-cart-bar clickable-footer" onclick="window.location.href='order.html'">
@@ -108,7 +74,7 @@
                 <p data-i18n="cart_empty">You have not added anything yet</p>
             </div>
             <div class="cart-icon-wrapper">
-                <div class="icon-btn cart-icon" aria-label="Shopping Cart">
+                <div class="icon-btn cart-icon" aria-label="Shopping Cart" data-i18n-aria-label="shopping_cart">
                     <svg class="cart-svg" viewBox="0 0 24 24" fill="none"
                         stroke="currentColor" stroke-width="2"
                         stroke-linecap="round" stroke-linejoin="round"
@@ -123,31 +89,10 @@
         </footer>
 
         <dialog id="meal-detail-modal" class="meal-modal">
-            <dialog id="info-modal" class="meal-modal">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h2 data-i18n="info_title">Dietary Information</h2>
-                        <button class="close-info-btn close-btn">X</button>
-                    </div>
-                    
-                    <div class="info-body">
-                        <p class="meal-description" data-i18n="meal_desc_1">A classic rich and hearty dish made with plant-based ingredients, slow-cooked to perfection.</p>
-                        
-                        <h3 data-i18n="dietary_tags_title" class="dietary-title">Dietary & Allergens</h3>
-                        <div class="dietary-tags">
-                            <span class="tag tag-vegan" data-i18n="tag_vegan">Vegan</span>
-                            <span class="tag tag-veg" data-i18n="tag_vegetarian">Vegetarian</span>
-                            <span class="tag tag-gf" data-i18n="tag_gluten_free">Gluten-Free</span>
-                            <span class="tag tag-allergen" data-i18n="tag_dairy">Contains: Dairy</span>
-                            <span class="tag tag-non-alcoholic" data-i18n="tag_non_alcoholic">Non-alcoholic</span>
-                        </div>
-                    </div>
-                </div>
-            </dialog>
             <div class="modal-content">
 
                 <div id="modal-header" class="modal-header">
-                    <button class="info-icon" aria-label="Visa allergener">
+                    <button class="info-icon" aria-label="Dietary information" data-i18n-aria-label="allergen_info">
                     <svg class="info-svg" viewBox="0 0 24 24" fill="none"
                         stroke="currentColor" stroke-width="2"
                         stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -157,7 +102,7 @@
                     </svg>
                     </button>     
 
-                    <button id="close-meal-btn" class="close-btn" aria-label="Stäng">
+                    <button id="close-meal-btn" class="close-btn" aria-label="Close" data-i18n-aria-label="close">
                         <svg class="x-svg" viewBox="0 0 24 24" fill="none"
                             stroke="currentColor" stroke-width="2"
                             stroke-linecap="round" stroke-linejoin="round"
@@ -168,7 +113,7 @@
                     </button>
                 </div>
                 
-                <h2 id="modal-title" data-i18n="modal_title">The name of the food</h2>
+                <h2 id="modal-title">The name of the food</h2>
                 
                 <div class="order-controls">
                     <div class="modal-price-row">
@@ -197,8 +142,25 @@
                 </div>
             </div>
         </dialog>
+
+        <dialog id="info-modal" class="meal-modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 data-i18n="info_title">Dietary Information</h2>
+                    <button class="close-info-btn close-btn" aria-label="Close" data-i18n-aria-label="close">X</button>
+                </div>
+
+                <div class="info-body">
+                    <p class="meal-description">Meal description</p>
+
+                    <h3 data-i18n="dietary_tags_title" class="dietary-title">Dietary & Allergens</h3>
+                    <div class="dietary-tags"></div>
+                </div>
+            </div>
+        </dialog>
     </div>
     <script src="../js/data/dictionary.js"></script>
+    <script src="../js/utils/AppUtils.js"></script>
     <script src="../js/data/menuData.js"></script>
     <script src="../js/model/CartModel.js"></script>
 

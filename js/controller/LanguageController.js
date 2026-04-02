@@ -20,6 +20,22 @@ function changeLanguage(lang) {
     if (typeof renderOrder === 'function') {
         renderOrder();
     }
+
+    if (typeof updateCartSummary === 'function') {
+        updateCartSummary();
+    }
+
+    if (typeof refreshActiveMealModal === 'function') {
+        refreshActiveMealModal();
+    }
+
+    if (typeof renderGroupOrderControls === 'function') {
+        renderGroupOrderControls();
+    }
+
+    if (typeof updateTotals === 'function') {
+        updateTotals();
+    }
 }
 
 /**
@@ -27,8 +43,9 @@ function changeLanguage(lang) {
  * with the translation corresponding to the selected language.
  */
 function updateUI() {
-    const lang = localStorage.getItem('selectedLanguage') || 'en';
+    const lang = AppUtils.getLanguage();
     
+    document.documentElement.lang = lang;
     
     const langPicker = document.querySelector('.language-picker select');
     if (langPicker) {
@@ -43,9 +60,14 @@ function updateUI() {
             if (element.tagName === 'INPUT' && element.hasAttribute('placeholder')) {
                 element.placeholder = dictionary[lang][key];
             } else {
-                element.innerText = dictionary[lang][key];
+                element.textContent = dictionary[lang][key];
             }
         }
+    });
+
+    document.querySelectorAll('[data-i18n-aria-label]').forEach((element) => {
+        const key = element.getAttribute('data-i18n-aria-label');
+        element.setAttribute('aria-label', AppUtils.translate(key, element.getAttribute('aria-label') || ''));
     });
 }
 

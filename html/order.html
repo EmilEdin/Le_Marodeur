@@ -4,7 +4,7 @@
     <link rel="stylesheet" href="../css/styles.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Order - Table Ordering App</title>
+    <title>My Order - Le Marodeur</title>
 </head>
 <body>
     <!-- 
@@ -15,7 +15,7 @@
     <div class="app-container">
 
         <header class="top-header">
-            <a href="javascript:history.back()" class="icon-btn back-btn" aria-label="Back">
+            <a href="javascript:history.back()" class="icon-btn back-btn" aria-label="Back" data-i18n-aria-label="back">
                 <svg class="back-icon" viewBox="0 0 24 24" fill="none" stroke="#b58c67" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                     <polyline points="15 18 9 12 15 6"></polyline>
                 </svg>
@@ -30,7 +30,7 @@
                     </select>
                 </div>
                 <div class="service-action">
-                    <a href="call-service.html" class="icon-btn bell-icon" aria-label="Notifications">
+                    <a href="call-service.html" class="icon-btn bell-icon" aria-label="Notifications" data-i18n-aria-label="notifications">
                         <svg class="bell-svg" viewBox="0 0 24 24" fill="none"
                             stroke="#b58c67" stroke-width="2.5"
                             stroke-linecap="round" stroke-linejoin="round"
@@ -47,7 +47,7 @@
         <main class="main-content">
             <div class="order-header-container">
                 <h1 class="order-header" data-i18n="my_order">MY ORDER</h1>
-                <button class="checkout-header-btn" onclick="window.location.href='checkout.html';">Checkout</button>
+                <button class="checkout-header-btn" onclick="window.location.href='checkout.html';" data-i18n="checkout_title">Checkout</button>
             </div>
             
             <div class="cart-table-wrapper">
@@ -72,7 +72,7 @@
                 <p id="order-total-text">To Payment 0€</p>
             </div>
             <div class="cart-icon-wrapper">
-                <div class="icon-btn cart-icon" aria-label="Shopping Cart">
+                <div class="icon-btn cart-icon" aria-label="Shopping Cart" data-i18n-aria-label="shopping_cart">
                     <svg class="cart-svg" viewBox="0 0 24 24" fill="none"
                         stroke="currentColor" stroke-width="2"
                         stroke-linecap="round" stroke-linejoin="round"
@@ -100,6 +100,7 @@
     </div>
 
     <script src="../js/data/dictionary.js"></script>
+    <script src="../js/utils/AppUtils.js"></script>
     <script src="../js/data/menuData.js"></script>
     <script src="../js/model/CartModel.js"></script>
     <script src="../js/controller/LanguageController.js"></script>

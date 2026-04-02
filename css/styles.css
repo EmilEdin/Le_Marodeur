@@ -24,17 +24,43 @@ body {
     /* Uses system fonts for a native app feel */
     
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-
+    background:
+        radial-gradient(circle at top, rgba(181, 140, 103, 0.15), transparent 35%),
+        linear-gradient(180deg, #14312f 0%, #0d2221 100%);
+    color: #ffffff;
 }
 
 .app-container {
     width: 100%;           /* Takes up the full width */
     max-width: 1024px;     /* But never gets wider than an iPad in landscape mode */
     min-height: 100vh;     /* Ensure it always covers the full height of the screen */
-    margin: 0;        /* Centers the container on the desktop screen */
+    margin: 0 auto;        /* Centers the container on the desktop screen */
     
     background-color: #1a3d3b;
     position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+a,
+button,
+select,
+input {
+    touch-action: manipulation;
+}
+
+a:focus-visible,
+button:focus-visible,
+select:focus-visible,
+input:focus-visible,
+.meal-card:focus-visible,
+.clickable-footer:focus-visible {
+    outline: 3px solid rgba(181, 140, 103, 0.95);
+    outline-offset: 3px;
+}
+
+.main-content {
+    flex: 1;
     display: flex;
     flex-direction: column;
 }
@@ -163,6 +189,54 @@ h1 {
     padding: 0 0 15px 15px;
 }
 
+.order-mode-panel {
+    padding: 0 20px 18px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px;
+}
+
+.order-mode-label,
+.guest-selection-label {
+    color: #84a1a0;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.order-mode-toggle {
+    display: inline-flex;
+    gap: 8px;
+    padding: 6px;
+    background-color: rgba(16, 43, 42, 0.6);
+    border: 1px solid rgba(132, 161, 160, 0.2);
+    border-radius: 999px;
+}
+
+.order-mode-btn {
+    border: none;
+    border-radius: 999px;
+    padding: 10px 16px;
+    background: transparent;
+    color: #84a1a0;
+    font: inherit;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.order-mode-btn.active {
+    background-color: #b58c67;
+    color: #ffffff;
+}
+
+.guest-selection-controls {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
 .category-list {
     display: flex;
     gap: 12px;
@@ -248,12 +322,38 @@ h1 {
     padding: 25px 0;
     border-bottom: 1px solid #b58c67;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 18px;
 }
 
 .meal-name {
     font-size: 16px;
     font-weight: 600;
+    color: #ffffff;
+    margin-bottom: 8px;
+}
+
+.meal-copy {
+    flex: 1;
+}
+
+.meal-description-preview {
+    font-size: 14px;
+    line-height: 1.5;
+    color: #84a1a0;
+}
+
+.meal-price {
+    color: #b58c67;
+    font-size: 16px;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.menu-empty-state {
+    padding: 48px 20px;
+    text-align: center;
     color: #84a1a0;
 }
 
@@ -505,6 +605,14 @@ dialog::backdrop {
     height: 56px;
 }
 
+.guest-selector {
+    height: 48px;
+}
+
+.guest-selector select {
+    min-width: 150px;
+}
+
 .add-btn {
     display: flex;
     justify-content: center;
@@ -657,6 +765,11 @@ dialog::backdrop {
     line-height: 1.5;
 }
 
+.dietary-empty {
+    color: #555;
+    font-size: 14px;
+}
+
 .dietary-tags {
     display: flex;
     flex-wrap: wrap;
@@ -789,6 +902,13 @@ dialog::backdrop {
     max-width: 350px;
 }
 
+.checkout-helper-text {
+    margin-top: 16px;
+    color: #84a1a0;
+    font-size: 14px;
+    line-height: 1.4;
+}
+
 .checkout-heading {
     margin-bottom: 8px;
     color: #ffffff;
@@ -847,6 +967,14 @@ dialog::backdrop {
     padding: 15px 25px;
     background-color: #d4edda; /* Light green success background */
     color: #155724; /* Change so it follow scheme */ 
+    border-radius: 12px;
+}
+
+.disabled-btn {
+    opacity: 0.55;
+    cursor: not-allowed;
+    transform: none !important;
+    box-shadow: none;
 }
 
 /* Add these below your other tag colors */
@@ -911,16 +1039,45 @@ dialog::backdrop {
 
 .action-cell {
     text-align: center !important;
-    width: 50px;
+    width: 120px;
 }
 
 .delete-btn-table {
-    background: none;
-    border: none;
     color: #b58c67;
-    font-size: 18px;
+}
+
+.item-actions {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+}
+
+.order-action-btn {
+    width: 34px;
+    height: 34px;
+    border: 1px solid rgba(132, 161, 160, 0.25);
+    border-radius: 10px;
+    background-color: #153533;
+    color: #ffffff;
+    font-size: 16px;
     cursor: pointer;
-    transition: color 0.2s;
+    transition: background-color 0.2s ease, opacity 0.2s ease;
+}
+
+.order-action-btn:disabled {
+    opacity: 0.35;
+    cursor: not-allowed;
+}
+
+.order-item-name {
+    font-weight: 600;
+    color: #ffffff;
+}
+
+.order-item-meta {
+    margin-top: 4px;
+    font-size: 12px;
+    color: #84a1a0;
 }
 
 .order-header-container {
@@ -1019,4 +1176,36 @@ dialog::backdrop {
     padding: 2px 6px;
     font-size: 12px;
     font-weight: bold;
+}
+
+.cart-qty-select {
+    width: 72px;
+    padding: 8px 12px;
+    border-radius: 10px;
+    border: 1px solid rgba(132, 161, 160, 0.35);
+    background-color: #153533;
+    color: #ffffff;
+    font: inherit;
+}
+
+@media (max-width: 720px) {
+    .meal-card {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .meal-price {
+        align-self: flex-start;
+    }
+
+    .order-header-container {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+
+    .cart-table th,
+    .cart-table td {
+        padding: 12px;
+    }
 }
