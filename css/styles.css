@@ -3,7 +3,7 @@
  * Global stylesheet for the Le Marodeur application.
  * Defines base resets, typography, layout, components, and responsive design.
  * Organized by sections:
- * - Base Resets & App Container
+ * - Base & App Container
  * - Top Header & Navigation
  * - Categories & Menu
  * - Sticky Bottom Cart
@@ -21,10 +21,7 @@
 }
 
 body {
-    /* Uses system fonts for a native app feel */
-    
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-
 }
 
 .app-container {
@@ -32,7 +29,6 @@ body {
     max-width: 1024px;     /* But never gets wider than an iPad in landscape mode */
     min-height: 100vh;     /* Ensure it always covers the full height of the screen */
     margin: 0;        /* Centers the container on the desktop screen */
-    
     background-color: #1a3d3b;
     position: relative;
     display: flex;
@@ -84,7 +80,7 @@ footer {
     align-items: center;
     justify-content: center;
     text-decoration: none;   
-    transition: transform 0.2s ease;
+    transition: all 0.2s ease;
     position: relative;
 }
 
@@ -121,7 +117,6 @@ footer {
     background-color: #1a3d3b;
     color: #ffffff;
 }
-
 
 h1 {
     font-family: "Lora","Lora Placeholder",serif;
@@ -194,7 +189,6 @@ h1 {
     color: #84a1a0;
 }
 
-/* --- The Active/Selected State --- */
 .category-item.active .category-btn {
     background-color: #b58c67;
     padding-bottom: 8px;
@@ -225,8 +219,7 @@ h1 {
    Menu List
    ========================================= */
 .menu-list {
-    flex-grow: 1; /* Pushes the footer to the bottom */
-    padding: 0 20px 100px; /* Extra bottom padding so the sticky cart doesn't hide items */
+    padding: 0 20px 100px;
 }
 
 .meal-card {
@@ -245,13 +238,11 @@ h1 {
 /* =========================================
    Info meal
    ========================================= */
-
 .dietary-warning {
     color: #555;
     font-size: 14px;
     display: inline-block;
 }
-
 
 /* =========================================
    Bottom Cart
@@ -281,8 +272,8 @@ h1 {
     justify-content: space-between;
     align-items: center;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
-    border: 1px solid rgba(132, 161, 160, 0.15); /* subtle teal border */
-    transition: transform 0.2s, box-shadow 0.2s;
+    border: 1px solid rgba(132, 161, 160, 0.15);
+    transition: all 0.2s ease;
 }
 
 .bottom-cart-bar:active {
@@ -304,77 +295,6 @@ h1 {
 .cart-empty-cell {
     text-align: center;
     padding: 30px;
-}
-
-/* =========================================
-   Confirm Dialog designs (Remove Item)
-   ========================================= */
-.confirm-modal {
-    border: none;
-    padding: 24px;
-    width: 90%;
-    max-width: 400px;
-    margin: auto; /* Centered vertically and horizontally */
-    border-radius: 16px;
-    background-color: #ffffff;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.2); 
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-}
-
-.confirm-modal::backdrop {
-    background-color: rgba(0, 0, 0, 0.4); 
-    backdrop-filter: blur(2px); 
-}
-
-.confirm-title {
-    font-size: 24px;
-    font-weight: 700;
-    color: #000000;
-    margin-top: 0;
-    margin-bottom: 12px;
-}
-
-.confirm-text {
-    font-size: 16px;
-    color: #000000;
-    margin-top: 0;
-    margin-bottom: 24px;
-    line-height: 1.4;
-}
-
-.confirm-controls {
-    display: flex;
-    gap: 12px;
-    align-items: center;
-}
-
-.confirm-btn {
-    flex: 1;
-    height: 48px;
-    border-radius: 12px;
-    font-size: 16px;
-    font-weight: 600;
-    cursor: pointer;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transition: background-color 0.2s, transform 0.1s;
-}
-
-.confirm-btn:active {
-    transform: scale(0.97);
-}
-
-.confirm-btn.cancel-btn {
-    background-color: #ffffff;
-    color: #000000;
-    border: 2px solid #102b2a; 
-}
-
-.confirm-btn.remove-btn {
-    background-color: #102b2a;
-    color: #ffffff;
-    border: none;
 }
 
 /* =========================================
@@ -499,16 +419,8 @@ dialog::backdrop {
     padding: 0px 15px;
     border-radius: 12px;
     cursor: pointer;
-    transition: transform 0.2s, background-color 0.2s;
+    transition: all 0.2s ease;
 }
-
-.modal-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-}
-
 
 .info-icon {
     background: none;
@@ -544,12 +456,10 @@ dialog::backdrop {
   stroke-width: 1.8;
 }
 
-/* This gives a nice feedback without changing the color */
 .info-icon:active, .close-btn:active {
     opacity: 0.6;
     transform: scale(0.9);
 }
-
 
 .edit-icon {
   display: flex;
@@ -567,10 +477,78 @@ dialog::backdrop {
 }
 
 /* =========================================
-    QR Code Section
+   Confirm Dialog designs (Remove Item)
    ========================================= */
+.confirm-modal {
+    border: none;
+    padding: 24px;
+    width: 90%;
+    max-width: 400px;
+    margin: auto; /* Centered vertically and horizontally */
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2); 
+}
 
-/* === QR Payment Page Styles === */
+.confirm-modal::backdrop {
+    background-color: rgba(0, 0, 0, 0.4); 
+    backdrop-filter: blur(2px); 
+}
+
+.confirm-title {
+    font-size: 24px;
+    font-weight: 700;
+    color: #102b2a;
+    margin-top: 0;
+    margin-bottom: 12px;
+}
+
+.confirm-text {
+    font-size: 16px;
+    color: #102b2a;
+    margin-top: 0;
+    margin-bottom: 24px;
+    line-height: 1.4;
+}
+
+.confirm-controls {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+.confirm-btn {
+    flex: 1;
+    height: 48px;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.2s ease;
+}
+
+.confirm-btn:active {
+    transform: scale(0.97);
+}
+
+.confirm-btn.cancel-btn {
+    background-color: #ffffff;
+    color: #000000;
+    border: 2px solid #102b2a; 
+}
+
+.confirm-btn.remove-btn {
+    background-color: #102b2a;
+    color: #ffffff;
+    border: none;
+}
+
+
+/* =========================================
+    QR Payment Section
+   ========================================= */
 
 .main-content {
     color: #84a1a0;
@@ -592,11 +570,9 @@ dialog::backdrop {
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 60px; /* Kan tas bort om du inte visar emoji längre */
     border-radius: 12px;
     margin-bottom: 20px;
     position: relative;
-    /* gör plats för bilden att fylla boxen! */
     overflow: hidden;
 }
 
@@ -633,16 +609,9 @@ dialog::backdrop {
     pointer-events: none;
 }
 
-icon-btn {
-    color: #84a1a0;
-}
-
 /* =========================================
     Card payment page styles
    ========================================= */
-
-
-
 .payment-form {
     display: flex;
     flex-direction: column;
@@ -650,7 +619,7 @@ icon-btn {
     width: 100%;
     max-width: 400px;
     margin: 0 auto;
-    padding: 0 8px; /* Säkrare på små skärmar */
+    padding: 0 8px;
 }
 
 .form-group {
@@ -668,21 +637,21 @@ icon-btn {
 .row-group {
     display: flex;
     gap: 15px;
-    flex-wrap: wrap; /* Gör raden flexibel om platsen tar slut */
+    flex-wrap: wrap;
 }
 
 .form-group.flex-1 {
-    flex: 1 1 120px; /* Tillåt att de krymper smart på små skärmar */
+    flex: 1 1 120px;
     min-width: 0;
 }
 
-/* Responsivitet – gör raderna till kolumner på små skärmar! */
 @media (max-width: 500px) {
     .row-group {
         flex-direction: column;
         gap: 0;
     }
 }
+
 /* TODO: Change colors to match the theme below */
 
 /* IPAD FOCUS: (Media Query for devices over 600px) --- */
@@ -716,7 +685,7 @@ icon-btn {
    ========================================= */
 .meal-card {
     cursor: grab;
-    transition: opacity 0.2s, background-color 0.2s;
+    transition: all 0.2s ease;
 }
 
 .meal-card:active {
@@ -729,7 +698,7 @@ icon-btn {
 }
 
 .bottom-cart-bar {
-    transition: background-color 0.2s, transform 0.2s;
+    transition: all 0.2s ease;
 }
 
 .bottom-cart-bar.drag-over {
@@ -988,7 +957,7 @@ icon-btn {
 }
 
 .cart-table tbody tr {
-    transition: background-color 0.2s;
+    transition: all 0.2s ease;
 }
 
 .action-cell {
@@ -1002,7 +971,7 @@ icon-btn {
     color: #b58c67;
     font-size: 18px;
     cursor: pointer;
-    transition: color 0.2s;
+    transition: all 0.2s ease;
 }
 
 .order-header-container {
@@ -1030,7 +999,7 @@ icon-btn {
     font-weight: 600;
     font-size: 14px;
     cursor: pointer;
-    transition: background-color 0.2s, transform 0.1s;
+    transition: all 0.2s ease;
 }
 
 .checkout-header-btn:active {
@@ -1067,7 +1036,6 @@ icon-btn {
 }
 
 .order-header {
-    text-align: center; 
     padding-top: 20px; 
     text-transform: uppercase;
 }
