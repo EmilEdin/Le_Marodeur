@@ -52,7 +52,7 @@ if (menuListContainer) {
             tagsContainer.innerHTML = '';
             
             if (meal.dietary.length === 0) {
-                tagsContainer.innerHTML = '<span style="color:#555; font-size:14px;">No specific dietary warnings.</span>';
+                tagsContainer.innerHTML = '<span class="dietary-warning">No specific dietary warnings.</span>';
             } else {
                 meal.dietary.forEach(tag => {
                     let tagClass = 'tag';

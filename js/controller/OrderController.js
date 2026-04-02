@@ -47,8 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const lang = localStorage.getItem('selectedLanguage') || 'en';
 
         if (cart.length === 0) {
-            orderContainer.innerHTML = '<tr><td colspan="5" style="text-align:center; padding:30px;"><p class="cart-empty-text" data-i18n="cart_empty">Your order is empty.</p></td></tr>';            
-            
+            orderContainer.innerHTML = '<tr><td colspan="5"><p class="cart-empty-text cart-empty-cell" data-i18n="cart_empty">Your order is empty.</p></td></tr>';            
             if (typeof updateUI === 'function') {
                 updateUI();
             }
