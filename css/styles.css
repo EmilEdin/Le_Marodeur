@@ -120,8 +120,9 @@ footer {
 
 h1 {
     font-family: "Lora","Lora Placeholder",serif;
-    font-size: 40px;
+    font-size: 24px;
     color: #ffffff;
+    text-transform: uppercase;
 }
 
 .service-action {
@@ -299,8 +300,6 @@ h1 {
     font-size: 16px;
 }
 
-
-
 /* =========================================
    Welcome Screen Styles
    ========================================= */
@@ -319,6 +318,11 @@ h1 {
     text-align: center;
     padding: 20px;
     color: #ffffff;
+}
+
+.restaurant-name {
+    font-size: 40px;
+    text-transform: none;
 }
 
 .logo-placeholder {
@@ -871,8 +875,6 @@ dialog::backdrop {
 .order-header {
     text-align: left; 
     padding-top: 0; 
-    text-transform: uppercase;
-    font-size: 24px;
     margin: 0;
     color: #ffffff;
 }
@@ -920,11 +922,6 @@ dialog::backdrop {
     cursor: pointer;
     color: #333;
     padding: 0 10px;
-}
-
-.order-header {
-    padding-top: 20px; 
-    text-transform: uppercase;
 }
 
 .cart-empty-text {
