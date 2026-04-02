@@ -3,13 +3,22 @@
  * Global stylesheet for the Le Marodeur application.
  * Defines base resets, typography, layout, components, and responsive design.
  * Organized by sections:
- * - Base & App Container
- * - Top Header & Navigation
- * - Categories & Menu
- * - Sticky Bottom Cart
- * - Modals & Dialogs
- * - Utilities & Tags
- */
+    * - Base Resets & App Container
+    * - Layout & Typography Utilities
+    * - Welcome Screen Styles
+    * - Menu Screen Styles
+    * - Menu Screen Styles - Info Meal
+    * - Menu Screen Styles - Bottom Cart
+    * - Menu Screen Styles - Drag and Drop Utilities
+    * - Menu Screen Styles - Dialog Designs (Meal detailed view)
+    * - Menu Screen Styles - Dietary Information & Tags
+    * - Call Service Feature Styles
+    * - Order Screen Styles
+    * - Order Screen Styles - Remove Item Dialog Designs
+    * - Order Screen Styles - Cart Layout
+    * - QR Payment Screen Styles
+    * - Card payment Screen Styles
+*/
 
 /* =========================================
    Base Resets & App Container
@@ -368,7 +377,7 @@ h1 {
 
 
 /* =========================================
-   Menu List
+   Menu Screen Styles
    ========================================= */
 .menu-list {
     padding: 0 20px 100px;
@@ -388,7 +397,7 @@ h1 {
 }
 
 /* =========================================
-   Info meal
+   Menu Screen Styles - Info meal
    ========================================= */
 .dietary-warning {
     color: #555;
@@ -397,7 +406,7 @@ h1 {
 }
 
 /* =========================================
-   Bottom Cart
+   Menu Screen Styles -Bottom Cart
    ========================================= */
 .cart-svg {
     width: 26px;             
@@ -450,7 +459,7 @@ h1 {
 }
 
 /* =========================================
-   Drag and Drop Utilities
+   Menu Screen Styles - Drag and Drop Utilities
    ========================================= */
 .meal-card {
     cursor: grab;
@@ -478,9 +487,21 @@ h1 {
     transform: scale(1.02);
 }
 
+.order-item-row.dragging {
+    opacity: 0.5;
+    background-color: #153533 !important;
+}
+
+.order-item-row.drag-over-top td {
+    border-top: 2px solid #b58c67;
+}
+
+.order-item-row.drag-over-bottom td {
+    border-bottom: 2px solid #b58c67;
+}
 
 /* =========================================
-   Dialog designs (Meal detailed view)
+   Menu Screen Styles - Dialog Designs (Meal detailed view)
    ========================================= */
 dialog::backdrop {
     background-color: rgba(0, 0, 0, 0.18); /* Make the backdrop dark and semi-transparent */
@@ -659,24 +680,7 @@ dialog::backdrop {
 }
 
 /* =========================================
-   Drag and Drop Table Styles
-   ========================================= */
-.order-item-row.dragging {
-    opacity: 0.5;
-    background-color: #153533 !important;
-}
-
-.order-item-row.drag-over-top td {
-    border-top: 2px solid #b58c67;
-}
-
-.order-item-row.drag-over-bottom td {
-    border-bottom: 2px solid #b58c67;
-}
-
-
-/* =========================================
-   Dietary Information & Tags
+   Menu Screen Styles - Dietary Information & Tags
    ========================================= */
 .info-body {
     display: flex;
@@ -730,8 +734,14 @@ dialog::backdrop {
 .tag-non-alcoholic { background-color: #4a90e2; } /* Blue for beverages */
 
 
+
 /* =========================================
-   Remove Item Dialog designs
+   Order Screen Styles
+   ========================================= */
+
+
+/* =========================================
+   Order Screen Styles - Remove Item Dialog designs
    ========================================= */
 .confirm-modal {
     border: none;
@@ -800,7 +810,7 @@ dialog::backdrop {
 }
 
 /* =========================================
-   Order Page & Cart Layout
+   Order Screen Styles - Cart Layout
    ========================================= */
 .cart-table-wrapper {
     width: 100%;
@@ -1079,7 +1089,7 @@ dialog::backdrop {
 }
 
 /* =========================================
-    QR Payment Section Styles
+    QR Payment Screen Styles
    ========================================= */
 .main-content {
     color: #84a1a0;
@@ -1141,7 +1151,7 @@ dialog::backdrop {
 }
 
 /* =========================================
-    Card payment page styles
+    Card payment Screen Styles
    ========================================= */
 .payment-form {
     display: flex;
