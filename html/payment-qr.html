@@ -5,47 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>QR Payment - Le Marodeur</title>
     <link rel="stylesheet" href="../css/styles.css">
-    <style>
-        .qr-section {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 20px;
-            margin-top: 20px;
-        }
-        .mock-qr-box {
-            width: 200px;
-            height: 200px;
-            background-color: #fff;
-            border: 2px dashed #333;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 60px;
-            border-radius: 12px;
-            margin-bottom: 20px;
-        }
-        .mock-camera {
-            width: 250px;
-            height: 250px;
-            background-color: #000;
-            border: 4px solid #8c1819;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            border-radius: 12px;
-            margin-bottom: 20px;
-            position: relative;
-        }
-        .mock-camera::after {
-            content: '';
-            position: absolute;
-            width: 80%;
-            height: 80%;
-            border: 2px solid rgba(255, 255, 255, 0.5);
-        }
-    </style>
 </head>
 <body>
     <!-- 
@@ -92,14 +51,16 @@
 
             <div id="show-qr-section" class="qr-section hidden">
                 <p data-i18n="scan_with_phone">Scan this code with your mobile banking app</p>
-                <div class="mock-qr-box">📱</div>
-                <button class="icon-btn mt-sm" onclick="showSection('qr-options')">Back</button>
+                <div class="mock-qr-box">
+                <img src="../assets/images/qr-code.jpg" alt="QR code for payment" class="qr-image">
+                </div>
+                <button class="payment-back-btn icon-btn mt-sm" onclick="showSection('qr-options')">Back</button>
             </div>
 
             <div id="scan-qr-section" class="qr-section hidden">
                 <p data-i18n="hold_qr_to_camera">Hold your physical QR code up to the camera</p>
                 <div class="mock-camera">Camera View</div>
-                <button class="icon-btn mt-sm" onclick="showSection('qr-options')">Back</button>
+                <button class="payment-back-btn icon-btn mt-sm" onclick="showSection('qr-options')">Back</button>
             </div>
         </main>
     </div>

@@ -566,6 +566,123 @@ dialog::backdrop {
   stroke-width: 2;
 }
 
+/* =========================================
+    QR Code Section
+   ========================================= */
+
+/* === QR Payment Page Styles === */
+
+.main-content {
+    color: #84a1a0;
+}
+
+.qr-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.mock-qr-box {
+    width: 200px;
+    height: 200px;
+    background-color: #fff;
+    border: 2px dashed #333;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 60px; /* Kan tas bort om du inte visar emoji längre */
+    border-radius: 12px;
+    margin-bottom: 20px;
+    position: relative;
+    /* gör plats för bilden att fylla boxen! */
+    overflow: hidden;
+}
+
+.qr-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+}
+
+.mock-camera {
+    width: 250px;
+    height: 250px;
+    background-color: #000;
+    border: 4px solid #8c1819;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    position: relative;
+    font-size: 20px;
+}
+
+.mock-camera::after {
+    content: '';
+    position: absolute;
+    width: 80%;
+    height: 80%;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    top: 10%;
+    left: 10%;
+    pointer-events: none;
+}
+
+icon-btn {
+    color: #84a1a0;
+}
+
+/* =========================================
+    Card payment page styles
+   ========================================= */
+
+
+
+.payment-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 0 8px; /* Säkrare på små skärmar */
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+.form-group input {
+    max-width: 100%;
+    padding: 12px 16px;
+    box-sizing: border-box;
+}
+
+.row-group {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap; /* Gör raden flexibel om platsen tar slut */
+}
+
+.form-group.flex-1 {
+    flex: 1 1 120px; /* Tillåt att de krymper smart på små skärmar */
+    min-width: 0;
+}
+
+/* Responsivitet – gör raderna till kolumner på små skärmar! */
+@media (max-width: 500px) {
+    .row-group {
+        flex-direction: column;
+        gap: 0;
+    }
+}
 /* TODO: Change colors to match the theme below */
 
 /* IPAD FOCUS: (Media Query for devices over 600px) --- */
@@ -680,7 +797,6 @@ dialog::backdrop {
 }
 
 .logo-placeholder {
-    font-size: 80px; /* Adjust emoji size */
     margin-bottom: 20px;
 }
 
@@ -692,7 +808,6 @@ dialog::backdrop {
 
 .start-btn {
     background-color: #b58c67;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     padding: 16px 40px;
     font-size: 20px;
     font-weight: 600;
@@ -752,14 +867,9 @@ dialog::backdrop {
 .mb-lg { margin-bottom: 40px; }
 .mt-sm { margin-top: 10px; }
 
-.status-emoji {
-    font-size: 80px;
-    margin-bottom: 20px;
-}
-
 .status-text {
     font-size: 18px;
-    color: #555555;
+    color: #84a1a0;
     line-height: 1.5;
     margin-bottom: 40px;
     max-width: 350px;
@@ -987,4 +1097,8 @@ dialog::backdrop {
     padding: 2px 6px;
     font-size: 12px;
     font-weight: bold;
+}
+
+.payment-back-btn {
+    color: #84a1a0;
 }
