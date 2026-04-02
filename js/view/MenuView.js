@@ -15,8 +15,13 @@ class MenuView {
         container.innerHTML = categories.map(cat => {
             // Dynamically assign the images based on category
             let imgSrc = '../assets/images/appetizer.jpg'; // Default for most meals
+            if (cat.id === 'todays_special') imgSrc = '../assets/images/bouillabaisse.jpg';
+            if (cat.id === 'starters') imgSrc = '../assets/images/starters.jpg';
+            if (cat.id === 'light_courses') imgSrc = '../assets/images/salad.jpg';
+            if (cat.id === 'main_courses') imgSrc = '../assets/images/main_course.jpg';
             if (cat.id === 'desserts') imgSrc = '../assets/images/dessert.jpg';
             if (cat.id === 'beverages') imgSrc = '../assets/images/wine.jpg';
+            if (cat.id === 'set_meal') imgSrc = '../assets/images/2course.jpg';
 
             return `
             <li class="category-item ${cat.id === activeCategoryId ? 'active' : ''}" data-category-id="${cat.id}">
