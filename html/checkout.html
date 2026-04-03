@@ -7,11 +7,6 @@
     <link rel="stylesheet" href="../css/styles.css">
 </head>
 <body>
-    <!-- 
-      Checkout Page 
-      Allows the user to input their table number, select a tip amount, 
-      view the total cost, and select a payment method.
-    -->
     <div class="app-container">
         <header class="top-header">
             <a href="javascript:history.back()" class="icon-btn back-btn" aria-label="Back">
@@ -59,10 +54,10 @@
                     
                     <p class="tip-heading" data-i18n="add_tip">Add a tip:</p>
                     <div class="tip-buttons">
-                        <button class="tip-btn active" onclick="applyTip(0, this)">0%</button>
-                        <button class="tip-btn" onclick="applyTip(10, this)">10%</button>
-                        <button class="tip-btn" onclick="applyTip(15, this)">15%</button>
-                        <button class="tip-btn" onclick="applyTip(20, this)">20%</button>
+                        <button class="tip-btn active">0%</button>
+                        <button class="tip-btn">10%</button>
+                        <button class="tip-btn">15%</button>
+                        <button class="tip-btn">20%</button>
                     </div>
 
                     <p class="total-price-row">
@@ -72,67 +67,16 @@
                 </div>
 
                 <div class="payment-options">
-                    <button class="checkout-pay-btn primary-pay-btn" onclick="proceedTo('payment-qr.html')" data-i18n="pay_by_qr">Pay by QR Code</button>
-                    <button class="checkout-pay-btn primary-pay-btn" onclick="proceedTo('payment-card.html')" data-i18n="pay_by_card">Pay by Card</button>
-                    <button class="checkout-pay-btn secondary-pay-btn" onclick="proceedTo('payment-waiter.html')" data-i18n="pay_at_table">Pay at Table</button>
+                    <button id="btn-pay-qr" class="checkout-pay-btn primary-pay-btn" data-i18n="pay_by_qr">Pay by QR Code</button>
+                    <button id="btn-pay-card" class="checkout-pay-btn primary-pay-btn" data-i18n="pay_by_card">Pay by Card</button>
+                    <button id="btn-pay-table" class="checkout-pay-btn secondary-pay-btn" data-i18n="pay_at_table">Pay at Table</button>
                 </div>
             </div>
         </main>
     </div>
 
     <script src="../js/model/CartModel.js"></script>
-    <script>
-        /**
-         * Checkout inline script
-         * Handles tip selection, total cost calculation, and payment method navigation.
-         */
-        let currentTip = 0;
-
-        /**
-         * Updates the subtotal and total UI elements based on the cart and selected tip.
-         */
-        function updateTotals() {
-            // Get the total cost from the cart
-            const subtotal = CartModel.getTotal();
-            const tipAmount = subtotal * (currentTip / 100);
-            const total = subtotal + tipAmount;
-            
-            // Update the UI
-            document.getElementById('subtotal-amount').innerText = subtotal.toFixed(2);
-            document.getElementById('total-amount').innerText = total.toFixed(2);
-        }
-
-        /**
-         * Applies the selected tip percentage and highlights the active button.
-         * @param {number} percentage - The tip percentage (e.g. 10, 15, 20).
-         * @param {HTMLElement} buttonElement - The button element that was clicked.
-         */
-        function applyTip(percentage, buttonElement) {
-            currentTip = percentage;
-            
-            // Highlight the selected button
-            document.querySelectorAll('.tip-btn').forEach(btn => btn.classList.remove('active'));
-            buttonElement.classList.add('active');
-            
-            updateTotals();
-        }
-
-        /**
-         * Validates the table number and navigates to the selected payment method.
-         * @param {string} url - The URL of the payment page to redirect to.
-         */
-        function proceedTo(url) {
-            const tableNum = document.getElementById('table-number').value;
-            if(!tableNum) {
-                alert('Please enter your table number to proceed.');
-                return;
-            }
-            localStorage.setItem('le_marodeur_table_number', tableNum);
-            window.location.href = url;
-        }
-
-        document.addEventListener('DOMContentLoaded', updateTotals);
-    </script>
+    <script src="../js/controller/CheckoutController.js"></script>
     <script src="../js/data/dictionary.js"></script>
     <script src="../js/controller/LanguageController.js"></script>
 </body>

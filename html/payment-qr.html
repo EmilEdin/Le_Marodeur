@@ -7,10 +7,6 @@
     <link rel="stylesheet" href="../css/styles.css">
 </head>
 <body>
-    <!-- 
-      QR Payment Page 
-      Mockup page that simulates showing a QR code to pay or scanning a QR code.
-    -->
     <div class="app-container">
         <header class="top-header">
             <a href="javascript:history.back()" class="icon-btn back-btn" aria-label="Back">
@@ -45,8 +41,8 @@
             <h1 class="mb-xs" data-i18n="pay_by_qr">Pay by QR Code</h1>
             
             <div id="qr-options" class="qr-options-flex">
-                <button class="start-btn" onclick="showSection('show-qr-section')" data-i18n="show_qr_code">Show QR Code</button>
-                <button class="start-btn btn-secondary" onclick="showSection('scan-qr-section')" data-i18n="scan_qr_code">Scan a QR Code</button>
+                <button id="btn-show-qr" class="start-btn" data-i18n="show_qr_code">Show QR Code</button>
+                <button id="btn-scan-qr" class="start-btn btn-secondary" data-i18n="scan_qr_code">Scan a QR Code</button>
             </div>
 
             <div id="show-qr-section" class="qr-section hidden">
@@ -54,30 +50,18 @@
                 <div class="mock-qr-box">
                 <img src="../assets/images/qr-code.jpg" alt="QR code for payment" class="qr-image">
                 </div>
-                <button class="payment-back-btn icon-btn mt-sm" onclick="showSection('qr-options')">Back</button>
+                <button class="payment-back-btn icon-btn mt-sm">Back</button>
             </div>
 
             <div id="scan-qr-section" class="qr-section hidden">
                 <p data-i18n="hold_qr_to_camera">Hold your physical QR code up to the camera</p>
                 <div class="mock-camera">Camera View</div>
-                <button class="payment-back-btn icon-btn mt-sm" onclick="showSection('qr-options')">Back</button>
+                <button class="payment-back-btn icon-btn mt-sm">Back</button>
             </div>
         </main>
     </div>
 
-    <script>
-        /**
-         * Toggles the visibility of the QR payment sections.
-         * @param {string} sectionId - The ID of the section to show.
-         */
-        function showSection(sectionId) {
-            document.getElementById('qr-options').classList.add('hidden');
-            document.getElementById('show-qr-section').classList.add('hidden');
-            document.getElementById('scan-qr-section').classList.add('hidden');
-            
-            document.getElementById(sectionId).classList.remove('hidden');
-        }
-    </script>
+    <script src="../js/controller/PaymentController.js"></script>
     <script src="../js/data/dictionary.js"></script>
     <script src="../js/controller/LanguageController.js"></script>
 </body>

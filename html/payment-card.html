@@ -7,11 +7,6 @@
     <link rel="stylesheet" href="../css/styles.css">
 </head>
 <body>
-    <!-- 
-      Card Payment Page 
-      Provides a form for users to enter their credit/debit card details 
-      to pay for their order.
-    -->
     <div class="app-container">
         <header class="top-header">
             <a href="javascript:history.back()" class="icon-btn back-btn" aria-label="Back">
@@ -45,7 +40,7 @@
         <main class="main-content layout-padded center-text">
             <h1 class="mb-md" data-i18n="pay_by_card">Pay by Card</h1>
             
-            <form class="payment-form" onsubmit="event.preventDefault(); alert('Payment processing (MVP mock)');">
+            <form id="card-payment-form" class="payment-form">
                 <div class="form-group">
                     <label data-i18n="card_name">Name on Card</label>
                     <input type="text" placeholder="John Doe" required>
@@ -70,6 +65,7 @@
         </main>
     </div>
 
+    <script src="../js/controller/PaymentController.js"></script>
     <script src="../js/data/dictionary.js"></script>
     <script src="../js/controller/LanguageController.js"></script>
 </body>
