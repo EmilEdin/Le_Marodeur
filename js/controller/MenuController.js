@@ -12,7 +12,6 @@ if (infoIcon) infoIcon.addEventListener('click', () => infoModal.showModal());
 if (closeInfoBtn) closeInfoBtn.addEventListener('click', () => infoModal.close());
 if (infoModal) infoModal.addEventListener('click', (e) => { if (e.target === infoModal) infoModal.close(); });
 
-// Meal Modal Logic
 const modal = document.getElementById('meal-detail-modal');
 
 
@@ -20,6 +19,13 @@ const closeBtn = document.getElementById('close-meal-btn');
 
 let currentMealId = null;
 let currentCategory = 'todays_special';
+
+function t(lang, key, fallback) {
+    if (typeof dictionary !== 'undefined' && dictionary[lang] && dictionary[lang][key]) {
+        return dictionary[lang][key];
+    }
+    return fallback;
+}
 
 const menuListContainer = document.getElementById('menu-list');
 if (menuListContainer) {
@@ -46,13 +52,15 @@ if (menuListContainer) {
             descElement.innerText = meal.descriptions[lang] || meal.descriptions['en'];
         }
 
-        // 3. Update the Dietary Info Tags dynamically
         const tagsContainer = document.querySelector('.dietary-tags');
         if (tagsContainer && meal.dietary) {
             tagsContainer.innerHTML = '';
             
             if (meal.dietary.length === 0) {
-                tagsContainer.innerHTML = '<span class="dietary-warning">No specific dietary warnings.</span>';
+                const warning = document.createElement('span');
+                warning.className = 'dietary-warning';
+                warning.innerText = t(lang, 'no_dietary_warnings', 'No specific dietary warnings.');
+                tagsContainer.appendChild(warning);
             } else {
                 meal.dietary.forEach(tag => {
                     let tagClass = 'tag';
@@ -154,7 +162,6 @@ window.updateMealsDisplay = function() {
     }
 };
 
-// Initialize App on Load
 document.addEventListener('DOMContentLoaded', () => {
     if (document.getElementById('category-list')) {
         MenuView.renderCategories(categoriesData, currentCategory);

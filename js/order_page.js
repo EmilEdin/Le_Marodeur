@@ -35,6 +35,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const cartBar = document.querySelector('.bottom-cart-bar');
     const cartStatus = document.querySelector('.cart-status p');
 
+    function t(lang, key, fallback) {
+        if (typeof dictionary !== 'undefined' && dictionary[lang] && dictionary[lang][key]) {
+            return dictionary[lang][key];
+        }
+        return fallback;
+    }
+
     if (cartBar) {
         cartBar.addEventListener('dragover', (e) => {
             e.preventDefault(); 
@@ -66,14 +73,13 @@ document.addEventListener('DOMContentLoaded', () => {
                     
                     
                     const mealName = menuItem.names[lang] || menuItem.names['en'];
-                    cartStatus.textContent = `Added ${mealName} to cart!`;
+                    const addedTemplate = t(lang, 'added_to_cart', 'Added {meal} to cart!');
+                    cartStatus.textContent = addedTemplate.replace('{meal}', mealName);
                     cartBar.classList.add('item-dropped');
-                    cartStatus.style.color = '#e04f26';
                     cartStatus.style.fontWeight = '700';
                     
                     setTimeout(() => {
                         cartBar.classList.remove('item-dropped');
-                        cartStatus.style.color = '';
                         cartStatus.style.fontWeight = '500';
                         updateCartUI();
                     }, 1500);
@@ -97,10 +103,7 @@ document.addEventListener('DOMContentLoaded', () => {
             cartStatus.removeAttribute('data-i18n');
             
             const lang = localStorage.getItem('selectedLanguage') || 'en';
-            let orderText = 'My Order';
-            if (typeof dictionary !== 'undefined' && dictionary[lang] && dictionary[lang]['my_order']) {
-                orderText = dictionary[lang]['my_order'];
-            }
+            const orderText = t(lang, 'my_order', 'My Order');
             
             cartStatus.textContent = `${orderText} ${total}€`;
             if (badge) {
@@ -113,11 +116,7 @@ document.addEventListener('DOMContentLoaded', () => {
             
             // Force the translation immediately based on current language
             const lang = localStorage.getItem('selectedLanguage') || 'en';
-            if (typeof dictionary !== 'undefined' && dictionary[lang] && dictionary[lang]['cart_empty']) {
-                cartStatus.textContent = dictionary[lang]['cart_empty'];
-            } else {
-                cartStatus.textContent = 'You have not added anything yet';
-            }
+            cartStatus.textContent = t(lang, 'cart_empty', 'You have not added anything yet');
             
             if (badge) badge.style.display = 'none';
         }

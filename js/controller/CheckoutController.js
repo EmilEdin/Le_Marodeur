@@ -10,6 +10,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const tipButtons = document.querySelectorAll('.tip-btn');
     const tableNumberInput = document.getElementById('table-number');
 
+    function t(lang, key, fallback) {
+        if (typeof dictionary !== 'undefined' && dictionary[lang] && dictionary[lang][key]) {
+            return dictionary[lang][key];
+        }
+        return fallback;
+    }
+
     function updateTotals() {
         if (typeof CartModel === 'undefined') return;
         
@@ -39,8 +46,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function proceedTo(url) {
         const tableNum = tableNumberInput ? tableNumberInput.value : '';
+        const lang = localStorage.getItem('selectedLanguage') || 'en';
         if(!tableNum) {
-            alert('Please enter your table number to proceed.');
+            alert(t(lang, 'please_enter_table_number', 'Please enter your table number to proceed.'));
             return;
         }
         localStorage.setItem('le_marodeur_table_number', tableNum);
