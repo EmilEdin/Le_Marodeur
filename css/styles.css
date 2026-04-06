@@ -1191,6 +1191,67 @@ dialog::backdrop {
         flex-direction: column;
         gap: 0;
     }
+
+    .cart-table-wrapper {
+        padding: 10px;
+    }
+
+    .cart-table th,
+    .cart-table td {
+        padding: 10px 6px;
+    }
+
+    .cart-table {
+        font-size: 13px;
+    }
+
+    .cart-table th {
+        font-size: 11px;
+    }
+
+    .action-cell {
+        width: 36px;
+    }
+
+    /* Checkout Mobile Tweaks */
+    .checkout-container {
+        gap: 12px;
+        padding: 10px;
+    }
+    
+    .table-input-group {
+        gap: 8px;
+    }
+
+    .table-input-group input {
+        padding: 10px;
+        font-size: 16px;
+    }
+
+    .tip-section {
+        padding: 16px;
+    }
+
+    .tip-buttons {
+        margin: 12px 0;
+    }
+
+    .tip-btn {
+        padding: 8px 6px;
+        font-size: 15px;
+    }
+
+    .checkout-pay-btn {
+        padding: 14px;
+        margin-bottom: 8px;
+        font-size: 16px;
+    }
+
+    .total-price-row {
+        margin-top: 12px;
+        padding-top: 10px;
+        font-size: 18px;
+    }
 }
 
 
