@@ -37,17 +37,17 @@ Le_Marodeur/
 │   │   ├── dictionary.js       # Language translations (i18n)
 │   │   └── menuData.js        # Menu categories and meals (Mock data / Model)
 │   ├── model/
-│   │   └── CartModel.js
+│   │   └── CartModel.js        # Cart state, totals and cart operations
 │   ├── view/
-│   │   └── MenuView.js
+│   │   └── MenuView.js         # Renders categories and meals to the DOM
 │   ├── controller/
-│   │   ├── CheckoutController.js
-│   │   ├── ServiceController.js
-│   │   ├── PaymentController.js
-│   │   ├── LanguageController.js
-│   │   ├── MenuController.js
-│   │   └── OrderController.js
-│   └── order_page.js
+│   │   ├── CheckoutController.js   # Handles tips, totals and checkout navigation
+│   │   ├── ServiceController.js    # Handles call-service button and popup flow
+│   │   ├── PaymentController.js    # Handles QR/card payment page interactions
+│   │   ├── LanguageController.js   # Applies selected language to all i18n elements
+│   │   ├── MenuController.js       # Handles menu interactions and add-to-cart logic
+│   │   └── OrderController.js      # Handles order table rendering and row reordering
+│   └── order_page.js               # Shared drag-and-drop behavior for menu/cart
 ├── assets/
 │   ├── images/
 │   └── icons/
