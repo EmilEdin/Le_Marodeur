@@ -115,6 +115,6 @@ Photo by <a href="https://unsplash.com/@cmrcn_?utm_source=unsplash&utm_medium=re
 The code is using direct SVG code from feather icons (https://feathericons.com/). The used ones can also be found in the folder icons but they are not used directly.
 
 ## Credits
-Project developed by [Emma Nöjd](https://github.com/nojdemma), []() and [Abdur Rehman Khalid](https://github.com/abdurehmank7).
+Project developed by [Emma Nöjd](https://github.com/nojdemma), [Emil Edin](https://github.com/emiledin) and [Abdur Rehman Khalid](https://github.com/abdurehmank7).
 
 ---

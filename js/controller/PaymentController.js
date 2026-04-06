@@ -1,6 +1,6 @@
 /**
  * PaymentController.js
- * Handles payment-related mock interactions for QR and Card forms.
+ * Handles payment interactions for QR and Card forms.
  */
 document.addEventListener('DOMContentLoaded', () => {
     const showQrBtn = document.getElementById('btn-show-qr');
@@ -10,6 +10,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const qrOptionsSection = document.getElementById('qr-options');
     const showQrSection = document.getElementById('show-qr-section');
     const scanQrSection = document.getElementById('scan-qr-section');
+
+    function t(lang, key, fallback) {
+        if (typeof dictionary !== 'undefined' && dictionary[lang] && dictionary[lang][key]) {
+            return dictionary[lang][key];
+        }
+        return fallback;
+    }
 
     function showSection(sectionElement) {
         if (qrOptionsSection) qrOptionsSection.classList.add('hidden');
@@ -30,7 +37,8 @@ document.addEventListener('DOMContentLoaded', () => {
     if (cardForm) {
         cardForm.addEventListener('submit', (e) => {
             e.preventDefault();
-            alert('Payment processing (MVP mock)');
+            const lang = localStorage.getItem('selectedLanguage') || 'en';
+            alert(t(lang, 'payment_submitted', 'Payment submitted.'));
         });
     }
 });
