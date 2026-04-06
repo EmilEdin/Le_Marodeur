@@ -74,7 +74,11 @@ const dictionary = {
         subtotal: "Subtotal:",
         add_tip: "Add a tip:",
         total_to_pay: "Total to Pay:",
-        my_order: "My Order"
+        my_order: "My Order",
+        to_payment: "To Payment",
+        added_to_cart: "Added {meal} to cart!",
+        order_empty: "Your order is empty.",
+        remove_item_aria: "Remove item"
     },
     sv: {
         welcome_title: "Välkommen",
@@ -142,7 +146,11 @@ const dictionary = {
         subtotal: "Delsumma:",
         add_tip: "Lägg till dricks:",
         total_to_pay: "Att betala:",
-        my_order: "Min Beställning"
+        my_order: "Min Beställning",
+        to_payment: "Till Betalning",
+        added_to_cart: "Lade till {meal} i beställningen!",
+        order_empty: "Din beställning är tom.",
+        remove_item_aria: "Ta bort rätt"
     },
     fr: {
         welcome_title: "Bienvenue",
@@ -210,6 +218,10 @@ const dictionary = {
         subtotal: "Sous-total :",
         add_tip: "Ajouter un pourboire :",
         total_to_pay: "Total à payer :",
-        my_order: "Ma Commande"
+        my_order: "Ma Commande",
+        to_payment: "Vers le Paiement",
+        added_to_cart: "{meal} a été ajouté au panier !",
+        order_empty: "Votre commande est vide.",
+        remove_item_aria: "Supprimer l'article"
     }
 };

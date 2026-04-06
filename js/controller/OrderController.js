@@ -14,6 +14,13 @@ document.addEventListener('DOMContentLoaded', () => {
     let itemToDeleteIndex = null;
     let draggedItemIndex = null;
 
+    function t(lang, key, fallback) {
+        if (typeof dictionary !== 'undefined' && dictionary[lang] && dictionary[lang][key]) {
+            return dictionary[lang][key];
+        }
+        return fallback;
+    }
+
     if (confirmDeleteBtn && cancelDeleteBtn && deleteModal) {
         confirmDeleteBtn.onclick = () => {
             if (itemToDeleteIndex !== null) {
@@ -47,7 +54,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const lang = localStorage.getItem('selectedLanguage') || 'en';
 
         if (cart.length === 0) {
-            orderContainer.innerHTML = '<tr><td colspan="5"><p class="cart-empty-text cart-empty-cell" data-i18n="cart_empty">Your order is empty.</p></td></tr>';            
+            const orderEmptyText = t(lang, 'order_empty', 'Your order is empty.');
+            orderContainer.innerHTML = `<tr><td colspan="5"><p class="cart-empty-text cart-empty-cell" data-i18n="order_empty">${orderEmptyText}</p></td></tr>`;
             if (typeof updateUI === 'function') {
                 updateUI();
             }
@@ -143,7 +151,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const deleteBtn = document.createElement('button');
                 deleteBtn.className = 'delete-btn-table';
                 deleteBtn.innerHTML = '✕';
-                deleteBtn.setAttribute('aria-label', 'Remove item');
+                deleteBtn.setAttribute('aria-label', t(lang, 'remove_item_aria', 'Remove item'));
                 deleteBtn.onclick = () => {
                     itemToDeleteIndex = index;
                     if (deleteModal) {
@@ -175,10 +183,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const total = CartModel.getTotal();
         const count = CartModel.getCount();
         const lang = localStorage.getItem('selectedLanguage') || 'en';
-        
-        
-        const toPaymentText = { en: 'To Payment', sv: 'Till Betalning', fr: 'Vers le Paiement' };
-        const prefix = toPaymentText[lang] || toPaymentText['en'];
+        const prefix = t(lang, 'to_payment', 'To Payment');
         
         if (count > 0) {
             orderTotalText.textContent = `${prefix} ${total}€`;
