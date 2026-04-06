@@ -38,12 +38,16 @@ Le_Marodeur/
 │   ├── view/
 │   │   └── MenuView.js        # Rendering menu/categories (View)
 │   ├── controller/
+│   │   ├── CheckoutController.js # 
+│   │   ├── ServiceController.js # 
+│   │   ├── PaymentController.js # 
 │   │   ├── LanguageController.js # Language switching and event logic (Controller)
 │   │   ├── MenuController.js     # Menu/category interaction logic (Controller)
 │   │   └── OrderController.js    # Order and cart management (Controller)
 │   └── order_page.js          # Drag-and-drop logic for ordering (Controller-logic)
 ├── assets/
-│   └── images/                # All image assets (dishes, QR, categories etc.)
+│   ├── images/ 
+│   └── icons/
 ├── index.html
 └── README.md
 ```
